@@ -1,0 +1,173 @@
+// Place any CSS rules you want to apply on both iOS and Android here.
+// This is where the vast majority of your CSS code goes.
+// Font icon class
+@import '_app-variables';
+
+.fa {
+    font-family: 'FontAwesome', 'fontawesome-webfont';
+    //padding-top: 24;
+    font-size: 18;
+    vertical-align: bottom;
+
+}
+
+
+// Common page class
+.page-content {
+    .page-placeholder {
+        color: $page-icon-color;
+        font-size: $page-content-placeholder-font-size;
+        vertical-align: center;
+        horizontal-align: center;
+    }
+
+    .page-icon {
+        font-size: 72;
+        vertical-align: top;
+        horizontal-align: center;
+        color: $page-icon-color;
+        margin-top: 20%;
+    }
+}
+
+.coverImage {
+    background-image: url("res://cloud");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+//ActionItem
+
+TabView {
+    background-color: white;
+}
+
+.under-action-bar {
+    // margin-top: -86;
+    background-color: $accent;
+    background-image: url("res://cloud");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    .action-bar-title {
+        .action-bar-area {
+            padding: 0 12 8 12;
+            height: 120;
+            width: 100%;
+            background-color: $accent;
+
+            .action-bar-area-title {
+                font-size: 36;
+                font-weight: 700;
+                color: $white;
+                margin: 36 6 6 6;
+                //width: 60;
+                text-align: left;
+            }
+
+            .action-bar-search-area {
+                margin: 36 4 0 4;
+                border-top: 1;
+                height: 48;
+
+                .action-bar-search {
+                    background-color: white;
+                    border-radius: 12;
+                    height: 48;
+                    margin-top: -36;
+                    color: lightgray;
+                    text-align: left;
+                    padding-left: 12;
+                    font-family: FontAwesome;
+                    font-size: 18;
+                    vertical-align: middle;
+                    width: 100%;
+                    box-shadow: inset 0 0 6 0 gray;
+                }
+
+            }
+        }
+    }
+}
+
+.card {
+    background-color: #fff;
+    color: #4d4d4d;
+    margin: 6 12 0;
+
+    .image-layout {
+        padding: 0;
+        border-radius: 6;
+
+        Image {
+            max-height: 80;
+            width: 80;
+
+        }
+
+    }
+
+    .arrow-layout {
+        vertical-align: center;
+        opacity: 0.2;
+        padding-right: 6;
+
+        Image {
+            width: 20;
+        }
+    }
+
+    .card-layout {
+        padding: 16;
+
+        .h1 {
+            margin-bottom: 12;
+        }
+    }
+}
+
+.home-card {
+    background-color: #fff;
+    color: #4d4d4d;
+    margin: 6 12 0;
+
+    .image-layout {
+        padding: 0;
+        border-radius: 6;
+
+        Image {
+            max-height: 80;
+            width: 80;
+
+        }
+
+    }
+
+    .arrow-layout {
+        vertical-align: center;
+        opacity: 0.2;
+        padding-right: 6;
+
+        Image {
+            width: 20;
+        }
+    }
+
+    .card-layout {
+        padding: 16;
+
+        .h1 {
+            margin-bottom: 12;
+        }
+    }
+}
+
+SegmentedBar {
+    selected-background-color: white;
+    font-size: 18;
+    color: white;
+    //background-color: blue;
+}

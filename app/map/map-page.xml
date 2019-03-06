@@ -1,0 +1,9 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:map="nativescript-mapbox" navigatingTo="navigatingTo">
+    <ActionBar class="action-bar" flat="true" title="{{ title }}"></ActionBar>
+    <StackLayout>
+        <Label text="Nice map, huh!" class="title" />
+        <ContentView height="100%" width="100%">
+            <Mapbox accessToken="your_token" mapStyle="traffic_day" latitude="50.467735" longitude="13.427718" hideCompass="true" zoomLevel="18" showUserLocation="false" disableZoom="false" disableRotation="false" disableScroll="false" disableTilt="false" (mapReady)="onMapReady($event)"></Mapbox>
+        </ContentView>
+    </StackLayout>
+</Page>

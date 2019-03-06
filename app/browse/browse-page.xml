@@ -1,0 +1,31 @@
+<Page class="page" navigatingTo="onNavigatingTo" navigatingTo="onNavigatingTo" navigatedTo="{{onNavigatedTo}}" actionBarHidden="false" xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:calendar="nativescript-ui-calendar">
+  <ActionBar class="action-bar" flat="true" title="{{ title }}"></ActionBar>
+  <StackLayout orientation="vertical" class="under-action-bar">
+    <StackLayout orientation="vertical" class="action-bar-title">
+      <GridLayout class="page-content" rows="40, *" columns="*">
+        <SegmentedBar row="0" loaded="sbLoaded" class="m-5" selectedIndex="{{ sbSelectedIndex }}">
+          <SegmentedBar.items>
+            <SegmentedBarItem title="Calendar" />
+            <SegmentedBarItem title="List" />
+          </SegmentedBar.items>
+        </SegmentedBar>
+        <GridLayout row="1" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}" backgroundColor="white">
+          <calendar:RadCalendar id="calendar" eventSource="{{ calendarEvents }}" eventsViewMode="Inline" selectionMode="Single" viewMode="Month" transitionMode="Stack" locale="en-US" dateSelected="onDateSelected" dateDeselected="onDateDeselected" navigatedToDate="onNavigatedToDate" navigatingToDateStarted="onNavigatingToDateStarted" viewModeChanged="onViewModeChanged" /> <!-- Event view mode can be one of "None", "Inline" or "Popover" -->
+          <!-- Selection mode can be one of "None", "Single", "Multiple" or "Range" -->
+          <!-- View mode can be one of "Week", "Month", "MonthNames", "Year" or "Day" -->
+          <!-- Available transition modes
+		 http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/Calendar/transition-modes
+	 -->
+          <!-- For styling the calendar, please go through this part in the docs
+		 http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/Calendar/Styling/styling
+	 -->
+          <!-- You can write the event handlers in viewModel or in the codeBehind file -->
+          <!-- If you write in viewModel then you'd use {{ }} brackets to bind the method -->
+        </GridLayout>
+        <GridLayout row="1" visibility="{{ visibility2 ? 'visible' : 'collapsed' }}" backgroundColor="green">
+          <Label text="{{ 'The new selectedIndex is: ' + prop }}" class="m-15 h3 p-5 text-center" color="white" />
+        </GridLayout>
+      </GridLayout>
+    </StackLayout>
+  </StackLayout>
+</Page>

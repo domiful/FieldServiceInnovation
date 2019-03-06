@@ -1,0 +1,31 @@
+<Page class="page" actionBarHidden="false" navigatingTo="onNavigatingTo" navigatedTo="{{onNavigatedTo}}" loaded="onPageLoaded" xmlns:Card="nativescript-cardview" xmlns="http://www.nativescript.org/tns.xsd">
+  <ActionBar class="action-bar" flat="true" title="{{ title }}"></ActionBar>
+  <ScrollView isScrollEnabled="{{ scrollEnabled }}" class="under-action-bar">
+    <!--> <StackLayout orientation="vertical" class="action-bar-title">
+      <StackLayout orientation="vertical" class="action-bar-area">
+        <Label textWrap="true" class="action-bar-area-title" text="{{ title }}"></Label>
+        <StackLayout orientation="vertical" class="action-bar-search-area">
+          <Button text="&#xf002; Search" tap="onTap" class="fa action-bar-search btn btn-primary btn-active" />
+        </StackLayout>
+      </StackLayout>
+    </StackLayout> !-->
+    <Repeater items="{{ items }}">
+      <Repeater.itemTemplate>
+        <Card:CardView class="card" elevation="6" radius="6" ios:shadowRadius="3" tap="onItemTap">
+          <GridLayout columns="80,*,auto" rows="auto">
+            <StackLayout col="0" class="image-layout">
+              <Image src="{{image}}" stretch="aspectFit" height="80" />
+            </StackLayout>
+            <StackLayout col="1" class="card-layout">
+              <Label class="h2" text="{{ name }}" />
+              <Label class="body" textWrap="true" text="{{ manufacturer }}" />
+            </StackLayout>
+            <StackLayout col="2" class="arrow-layout">
+              <Image src="https://icons-for-free.com/free-icons/png/512/1564490.png" stretch="aspectFill" />
+            </StackLayout>
+          </GridLayout>
+        </Card:CardView>
+      </Repeater.itemTemplate>
+    </Repeater>
+  </ScrollView>
+</Page>

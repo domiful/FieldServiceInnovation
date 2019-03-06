@@ -1,0 +1,47 @@
+<Page class="page" actionBarHidden="false" navigatingTo="onNavigatingTo" loaded="{{ contentLoaded }}" xmlns:chart="nativescript-ui-chart" xmlns:Gif="nativescript-gif" xmlns:Card="nativescript-cardview" xmlns="http://www.nativescript.org/tns.xsd">
+    <ActionBar class="action-bar" flat="true" title="{{ title }}"></ActionBar>
+    <ScrollView isScrollEnabled="{{ scrollEnabled }}" class="under-action-bar coverImage">
+        <StackLayout orientation="vertical" class="action-bar-title">
+            <Repeater items="{{ items }}" itemTap="onItemTap">
+                <Repeater.itemTemplate>
+                    <Card:CardView class="home-card" elevation="6" radius="6" ios:shadowRadius="3">
+                        <StackLayout>
+                            <GridLayout columns="80,*">
+                                <StackLayout col="0" class="image-layout">
+                                    <Image src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" stretch="aspectFill" />
+                                </StackLayout>
+                                <StackLayout col="1" class="card-layout">
+                                    <Label class="h2" text="{{ name }}" />
+                                    <Label class="body" textWrap="true" text="{{ description }}" />
+                                </StackLayout>
+                            </GridLayout>
+                            <StackLayout>
+                                <Button text="Sign Out" tap="logOut" class="btn btn-primary" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Card:CardView>
+                </Repeater.itemTemplate>
+            </Repeater>
+            <!--         <Card:CardView class="card" height="200" elevation="6" radius="6" ios:shadowRadius="3">
+                <GridLayout columns="auto" rows="*">
+                    <StackLayout col="0" class="image-layout">
+                        <chart:RadCartesianChart id="cartesianChart">
+                            <chart:RadCartesianChart.grid>
+                                <chart:RadCartesianChartGrid horizontalLinesVisible="true" verticalLinesVisible="true" horizontalStripLinesVisible="true" verticalStripLinesVisible="true" verticalStrokeColor="#804d0026" horizontalStrokeColor="#ffffcc80" horizontalStrokeWidth="2" verticalStrokeWidth="3" horizontalStripLineColor="#8059005c, #804d0026" />
+                            </chart:RadCartesianChart.grid>
+                            <chart:RadCartesianChart.series>
+                                <chart:BarSeries items="{{ categoricalSource }}" categoryProperty="name" valueProperty="description"></chart:BarSeries>
+                                <chart:RadCartesianChart.horizontalAxis>
+                                    <chart:CategoricalAxis />
+                                </chart:RadCartesianChart.horizontalAxis>
+                                <chart:RadCartesianChart.verticalAxis>
+                                    <chart:LinearAxis />
+                                </chart:RadCartesianChart.verticalAxis>
+                            </chart:RadCartesianChart.series>
+                        </chart:RadCartesianChart>
+                    </StackLayout>
+                </GridLayout>
+            </Card:CardView>!-->
+        </StackLayout>
+    </ScrollView>
+</Page>

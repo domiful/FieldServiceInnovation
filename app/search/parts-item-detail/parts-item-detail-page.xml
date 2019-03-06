@@ -1,0 +1,49 @@
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
+    <ActionBar class="action-bar">
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+    <ActionBar class="action-bar">
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
+        <Label class="action-bar-title" text="{{ name }}" horizontalAlignment="center" />
+    </ActionBar>
+    <GridLayout class="page-content">
+        <ScrollView>
+            <StackLayout>
+                <GridLayout columns="*">
+                    <Button col="0" text="Request Part" class="btn-primary" backgroundColor="#3D83B6" tap="{{onRequestTap}}" />
+                </GridLayout>
+                <GridLayout rows="auto, auto, auto">
+                    <Image src="{{ image }}" stretch="aspectFill" height="200" class="m-b-15 m-t-20" />
+                    <StackLayout row="1" class="hr-light m-t-15 m-b-15"></StackLayout>
+                    <GridLayout row="2" rows="*, *, *, *, *, *, *, *, *, *, *" columns="auto,auto">
+                        <Label text="Price" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label col="1" class="text p-b-10">
+                            <FormattedString>
+                                <Span text="$" />
+                                <Span text="{{ price }}" />
+                            </FormattedString>
+                        </Label>
+                        <Label text="Manufacturer" row="1" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ manufacturer }}" row="1" col="1" class="text p-b-10" />
+                        <Label text="Manufacturer SKU" row="2" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ manufacturerSKU }}" row="2" col="1" class="text p-b-10" />
+                        <Label text="Vendor SKU" row="3" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ vendorSKU }}" row="3" col="1" class="text p-b-10" />
+                        <Label text="Category 1" row="4" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ cat1 }}" row="4" col="1" class="text p-b-10" />
+                        <Label text="Category 2" row="5" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ cat2 }}" row="5" col="1" class="text p-b-10" />
+                        <Label text="Detail 1" row="6" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ det1 }}" row="6" col="1" class="text p-b-10" />
+                        <Label text="Detail 2" row="7" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ det2 }}" row="7" col="1" class="text p-b-10" />
+                        <Label text="Weight (lbs)" row="8" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ weight }}" row="8" col="1" class="text p-b-10" />
+                        <Label text="On Hand" row="9" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ stock }}" row="9" col="1" class="text p-b-10" />
+                    </GridLayout>
+                </GridLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>
