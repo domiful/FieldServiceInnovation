@@ -9,9 +9,9 @@
                     <Repeater.itemTemplate>
                         <Card:CardView class="home-card" elevation="6" radius="6" ios:shadowRadius="3">
                             <StackLayout>
-                                <GridLayout rows="200,*">
+                                <GridLayout rows="250,*">
                                     <StackLayout row="0" class="image-layout">
-                                        <Image src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" stretch="aspectFill" />
+                                        <Image src="https://avatars.servers.getgo.com/2205256774854474505_medium.jpg" stretch="aspectFit" />
                                     </StackLayout>
                                     <StackLayout row="1" class="card-layout">
                                         <Label class="h2" text="{{ name }}" />

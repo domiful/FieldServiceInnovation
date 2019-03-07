@@ -10,29 +10,23 @@
                     <Label text="{{name}}" class="prodTitle" textWrap="true"></Label>
                     <GridLayout row="1" rows="*, *, *, *, *, *, *, *, *, *, *" columns="auto,auto">
                         <Label text="Customer" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ cust }}" row="0" col="1" class="text p-b-10" />
-                        <Label text="Company" row="1" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ company }}" row="1" col="1" class="text p-b-10" />
-                        <Label text="Issue" row="2" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ issue }}" row="2" col="1" class="text p-b-10" />
-                        <Label text="Vendor SKU" row="3" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ vendorSKU }}" row="3" col="1" class="text p-b-10" />
-                        <Label text="Category 1" row="4" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ cat1 }}" row="4" col="1" class="text p-b-10" />
-                        <Label text="Category 2" row="5" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ cat2 }}" row="5" col="1" class="text p-b-10" />
-                        <Label text="Detail 1" row="6" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ det1 }}" row="6" col="1" class="text p-b-10" />
-                        <Label text="Detail 2" row="7" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ det2 }}" row="7" col="1" class="text p-b-10" />
-                        <Label text="Weight (lbs)" row="8" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ weight }}" row="8" col="1" class="text p-b-10" />
-                        <Label text="On Hand" row="9" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ stock }}" row="9" col="1" class="text p-b-10" />
+                        <Label text="{{ cal.data.cust }}" row="0" col="1" class="text p-b-10" />
+                        <Label text="Email" row="1" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ cal.data.email }}" row="1" col="1" class="text p-b-10" tap="mailTo" />
+                        <Label text="Cell" row="2" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ cal.data.cell }}" row="2" col="1" class="text p-b-10" tap="call" />
+                        <Label text="Issue" row="3" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ cal.data.issue }}" row="3" col="1" class="text p-b-10" />
+                        <Label text="Status" row="4" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ status ? 'Open' : 'Close'  }}" row="4" col="1" class="text p-b-10" />
+                        <Label text="Address" row="5" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ cal.data.address }}" row="5" col="1" class="text p-b-10" tap="onTapAddress" />
+                        <Label text="{{ cal.data.city}}" row="6" col="1" class="text p-b-10" tap="onTapAddress" />
+                        <Label text="{{ cal.data.zip }}" row="7" col="1" class="text p-b-10" tap="onTapAddress" />
                     </GridLayout>
                     <Button row="2" text="Sign &amp; Close" class="requestButton" tap="showDrawpad" />
                 </GridLayout>
-                <StackLayout row="3" visibility="{{ showDP ? 'visible' : 'collapsed' }}">
+                <StackLayout class="draw" row="3" visibility="{{ showDP ? 'visible' : 'collapsed' }}">
                     <Label class="h2" textWrap="true" text="By signing here, I agree that the service was performed to my satisfaction."></Label>
                     <DrawingPad:DrawingPad height="400" id="drawingPad" penColor="{{ penColor }}" penWidth="{{ penWidth }}" />
                     <GridLayout rows="auto" columns="*,*">

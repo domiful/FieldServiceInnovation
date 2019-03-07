@@ -12,7 +12,7 @@ function BrowseViewModel() {
         visibility1: true,
         visibility2: false,
         events: [],
-        items: [],
+        items: {},
         sbLoaded: function (event) {
             const segmentedBarComponent = event.object;
             segmentedBarComponent.on("selectedIndexChange", (sbargs) => {
@@ -43,10 +43,9 @@ function BrowseViewModel() {
         navCal: function (title) {
             const that = this;
             //const myPage = frame.topmost().currentPage;
-
             topmost().navigate({
                 moduleName: "browse/appt-item-detail/appts-item-detail-page",
-                context: that.items[title],
+                context: { data: that.items[title] },
                 animated: true,
                 transition: {
                     name: "slide",
@@ -73,7 +72,7 @@ function BrowseViewModel() {
             const subscription = dataStore.find()
                 .subscribe((entities) => {
                         //console.log("Retrieved : " + JSON.stringify(entities));
-                        let nitems = [];
+                        let nitems = {};
                         let newEvents = entities.map((ent) => {
                             let newEnt = {};
                             console.log(ent);
@@ -84,7 +83,7 @@ function BrowseViewModel() {
                             newEnt["id"] = ent["custID"];
                             newEnt["status"] = ent["status"];
                             newEnt["techId"] = ent["tech_id"];
-                            newEnt["address"] = ent["address"];
+                            newEnt["address"] = ent["address1"];
                             newEnt["city"] = ent["city"];
                             newEnt["state"] = ent["state"];
                             newEnt["zip"] = ent["zip"];
@@ -99,9 +98,9 @@ function BrowseViewModel() {
                             newEnt["lat"] = ent["ackGeoLat"];
                             newEnt["long"] = ent["ackGeoLong"];
                             console.log(newEnt);
-                            let kvp = {};
-                            kvp[calTitle] = newEnt;
-                            nitems.push(kvp);
+                            //let kvp = {};
+                            nitems[calTitle] = newEnt;
+                            //nitems.push(kvp);
 
                             return event;
                         });

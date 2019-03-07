@@ -7,7 +7,7 @@
       <SegmentedBar row="0" class="m-5" selectedIndex="{{ sbSelectedIndex }}" loaded="{{ sbLoaded }}">
         <SegmentedBar.items>
           <SegmentedBarItem title="Breaker" />
-          <SegmentedBarItem title="Outlet" />
+          <SegmentedBarItem title="Plug" />
         </SegmentedBar.items>
       </SegmentedBar>
     </StackLayout>

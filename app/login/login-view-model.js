@@ -32,7 +32,7 @@ function LoginViewModel() {
                 }).then(() => {
 
                     topmost().navigate({
-                        moduleName: "./tabs",
+                        moduleName: "./home/home-items-page",
                         clearHistory: true
                     });
 

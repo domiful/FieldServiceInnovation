@@ -33,14 +33,14 @@ function SearchViewModel() {
                 let filteredList = [];
                 if (this.sbSelectedIndex === 0) {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() !== "outlet") {
+                        if (i.cat2.toLowerCase() !== "plug") {
                             filteredList.push(i);
                         }
                     });
                 }
                 else {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() == "outlet") {
+                        if (i.cat2.toLowerCase() == "plug") {
                             filteredList.push(i);
                         }
                     });
@@ -60,14 +60,14 @@ function SearchViewModel() {
                 let filteredList = [];
                 if (this.sbSelectedIndex === 0) {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() == "outlet") {
+                        if (i.cat2.toLowerCase() == "plug") {
                             filteredList.push(i);
                         }
                     });
                 }
                 else {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() !== "outlet") {
+                        if (i.cat2.toLowerCase() !== "plug") {
                             filteredList.push(i);
                         }
                     });

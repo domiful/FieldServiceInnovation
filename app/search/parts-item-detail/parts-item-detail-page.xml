@@ -27,8 +27,6 @@
                         <Label text="{{ det1 }}" row="6" col="1" class="text p-b-10" />
                         <Label text="Detail 2" row="7" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ det2 }}" row="7" col="1" class="text p-b-10" />
-                        <Label text="Weight (lbs)" row="8" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ weight }}" row="8" col="1" class="text p-b-10" />
                         <Label text="On Hand" row="9" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ stock }}" row="9" col="1" class="text p-b-10" />
                     </GridLayout>
