@@ -1,29 +1,31 @@
-<Page class="page" actionBarHidden="false" navigatingTo="onNavigatingTo" loaded="{{ contentLoaded }}" xmlns:chart="nativescript-ui-chart" xmlns:Gif="nativescript-gif" xmlns:Card="nativescript-cardview" xmlns="http://www.nativescript.org/tns.xsd">
+<Page xmlns:Gif="nativescript-gif" class="page" actionBarHidden="false" navigatingTo="onNavigatingTo" loaded="{{ contentLoaded }}" xmlns:chart="nativescript-ui-chart" xmlns:Gif="nativescript-gif" xmlns:Card="nativescript-cardview" xmlns="http://www.nativescript.org/tns.xsd">
     <ActionBar class="action-bar" flat="true" title=""></ActionBar>
     <ScrollView isScrollEnabled="{{ scrollEnabled }}" class="under-action-bar coverImage">
-        <StackLayout orientation="vertical" class="action-bar-title">
-            <Label text="Welcome back!" class="welcome"></Label>
-            <Repeater items="{{ items }}" itemTap="onItemTap">
-                <Repeater.itemTemplate>
-                    <Card:CardView class="home-card" elevation="6" radius="6" ios:shadowRadius="3">
-                        <StackLayout>
-                            <GridLayout rows="200,*">
-                                <StackLayout row="0" class="image-layout">
-                                    <Image src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" stretch="aspectFill" />
-                                </StackLayout>
-                                <StackLayout row="1" class="card-layout">
-                                    <Label class="h2" text="{{ name }}" />
-                                    <Label class="body" textWrap="true" text="{{ description }}" />
-                                </StackLayout>
-                            </GridLayout>
+        <AbsoluteLayout horizontalAlignment="stretch" width="100%">
+            <Gif:Gif left="0" top="240" src="http://drive.google.com/uc?export=view&id=19SuLCJ4wVOfPaf5urxzkuCOdmwaeiNPk" height="400" width="800" />
+            <StackLayout width="100%" orientation="vertical" class="action-bar-title">
+                <Label text="Welcome back!" class="welcome"></Label>
+                <Repeater items="{{ items }}" itemTap="onItemTap">
+                    <Repeater.itemTemplate>
+                        <Card:CardView class="home-card" elevation="6" radius="6" ios:shadowRadius="3">
                             <StackLayout>
-                                <Button text="Sign Out" tap="logOut" class="btn btn-primary" />
+                                <GridLayout rows="200,*">
+                                    <StackLayout row="0" class="image-layout">
+                                        <Image src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" stretch="aspectFill" />
+                                    </StackLayout>
+                                    <StackLayout row="1" class="card-layout">
+                                        <Label class="h2" text="{{ name }}" />
+                                        <Label class="body" textWrap="true" text="{{ description }}" />
+                                    </StackLayout>
+                                </GridLayout>
+                                <StackLayout>
+                                    <Button text="Sign Out" tap="logOut" class="btn btn-primary" />
+                                </StackLayout>
                             </StackLayout>
-                        </StackLayout>
-                    </Card:CardView>
-                </Repeater.itemTemplate>
-            </Repeater>
-            <!--         <Card:CardView class="card" height="200" elevation="6" radius="6" ios:shadowRadius="3">
+                        </Card:CardView>
+                    </Repeater.itemTemplate>
+                </Repeater>
+                <!--         <Card:CardView class="card" height="200" elevation="6" radius="6" ios:shadowRadius="3">
                 <GridLayout columns="auto" rows="*">
                     <StackLayout col="0" class="image-layout">
                         <chart:RadCartesianChart id="cartesianChart">
@@ -43,6 +45,7 @@
                     </StackLayout>
                 </GridLayout>
             </Card:CardView>!-->
-        </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
     </ScrollView>
 </Page>

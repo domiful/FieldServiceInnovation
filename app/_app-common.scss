@@ -46,7 +46,7 @@
 }
 
 .coverImage {
-    background-image: url("res://cloud");
+    // background-image: url("res://cloud");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -63,10 +63,7 @@ TabView {
 .under-action-bar {
     // margin-top: -86;
     background-color: $accent;
-    background-image: url("res://cloud.gif");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+
 
     .action-bar-title {
         .welcome {
