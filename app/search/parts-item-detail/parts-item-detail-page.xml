@@ -1,28 +1,18 @@
 <Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
-    <ActionBar class="action-bar">
+    <ActionBar class="action-bar" flat="true">
         <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
-    </ActionBar>
-    <ActionBar class="action-bar">
-        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
-        <Label class="action-bar-title" text="{{ name }}" horizontalAlignment="center" />
+        <Label class="action-bar-title" text="Part" horizontalAlignment="center" />
     </ActionBar>
     <GridLayout class="page-content">
         <ScrollView>
             <StackLayout>
-                <GridLayout columns="*">
-                    <Button col="0" text="Request Part" class="btn-primary" backgroundColor="#3D83B6" tap="{{onRequestTap}}" />
-                </GridLayout>
-                <GridLayout rows="auto, auto, auto">
-                    <Image src="{{ image }}" stretch="aspectFill" height="200" class="m-b-15 m-t-20" />
-                    <StackLayout row="1" class="hr-light m-t-15 m-b-15"></StackLayout>
-                    <GridLayout row="2" rows="*, *, *, *, *, *, *, *, *, *, *" columns="auto,auto">
+                <GridLayout rows="auto, auto, auto, auto">
+                    <Label text="{{name}}" class="prodTitle" textWrap="true"></Label>
+                    <Image row="1" src="{{ image }}" class="prodImage" stretch="aspectFit" class="m-b-15 m-t-20" />
+                    <Button row="2" text="Request Part" class="requestButton" tap="{{onRequestTap}}" />
+                    <GridLayout row="3" rows="*, *, *, *, *, *, *, *, *, *, *" columns="auto,auto">
                         <Label text="Price" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label col="1" class="text p-b-10">
-                            <FormattedString>
-                                <Span text="$" />
-                                <Span text="{{ price }}" />
-                            </FormattedString>
-                        </Label>
+                        <Label text="{{ price }}" row="0" col="1" class="text p-b-10" />
                         <Label text="Manufacturer" row="1" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ manufacturer }}" row="1" col="1" class="text p-b-10" />
                         <Label text="Manufacturer SKU" row="2" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />

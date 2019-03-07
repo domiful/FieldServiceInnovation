@@ -3,14 +3,14 @@
   <StackLayout orientation="vertical" class="under-action-bar">
     <StackLayout orientation="vertical" class="action-bar-title">
       <GridLayout class="page-content" rows="40, *" columns="*">
-        <SegmentedBar row="0" loaded="sbLoaded" class="m-5" selectedIndex="{{ sbSelectedIndex }}">
+        <SegmentedBar row="0" loaded="{{ sbLoaded }}" class="m-5 calendarBar" selectedIndex="{{ sbSelectedIndex }}">
           <SegmentedBar.items>
-            <SegmentedBarItem title="Calendar" />
-            <SegmentedBarItem title="List" />
+            <SegmentedBarItem title="Month" />
+            <SegmentedBarItem title="Week" />
           </SegmentedBar.items>
         </SegmentedBar>
         <GridLayout row="1" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}" backgroundColor="white">
-          <calendar:RadCalendar id="calendar" eventSource="{{ calendarEvents }}" eventsViewMode="Inline" selectionMode="Single" viewMode="Month" transitionMode="Stack" locale="en-US" dateSelected="onDateSelected" dateDeselected="onDateDeselected" navigatedToDate="onNavigatedToDate" navigatingToDateStarted="onNavigatingToDateStarted" viewModeChanged="onViewModeChanged" /> <!-- Event view mode can be one of "None", "Inline" or "Popover" -->
+          <calendar:RadCalendar id="calendar" eventSource="{{ events }}" eventsViewMode="Inline" selectionMode="Single" viewMode="{{calViewMode}}" transitionMode="Stack" locale="en-US" dateSelected="{{onDateSelected}}" dateDeselected="onDateDeselected" inlineEventSelected="{{onNavigatedToDate}}" navigatingToDateStarted="onNavigatingToDateStarted" viewModeChanged="onViewModeChanged" /> <!-- Event view mode can be one of "None", "Inline" or "Popover" -->
           <!-- Selection mode can be one of "None", "Single", "Multiple" or "Range" -->
           <!-- View mode can be one of "Week", "Month", "MonthNames", "Year" or "Day" -->
           <!-- Available transition modes

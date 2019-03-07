@@ -1,16 +1,17 @@
 <Page class="page" actionBarHidden="false" navigatingTo="onNavigatingTo" loaded="{{ contentLoaded }}" xmlns:chart="nativescript-ui-chart" xmlns:Gif="nativescript-gif" xmlns:Card="nativescript-cardview" xmlns="http://www.nativescript.org/tns.xsd">
-    <ActionBar class="action-bar" flat="true" title="{{ title }}"></ActionBar>
+    <ActionBar class="action-bar" flat="true" title=""></ActionBar>
     <ScrollView isScrollEnabled="{{ scrollEnabled }}" class="under-action-bar coverImage">
         <StackLayout orientation="vertical" class="action-bar-title">
+            <Label text="Welcome back!" class="welcome"></Label>
             <Repeater items="{{ items }}" itemTap="onItemTap">
                 <Repeater.itemTemplate>
                     <Card:CardView class="home-card" elevation="6" radius="6" ios:shadowRadius="3">
                         <StackLayout>
-                            <GridLayout columns="80,*">
-                                <StackLayout col="0" class="image-layout">
+                            <GridLayout rows="200,*">
+                                <StackLayout row="0" class="image-layout">
                                     <Image src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" stretch="aspectFill" />
                                 </StackLayout>
-                                <StackLayout col="1" class="card-layout">
+                                <StackLayout row="1" class="card-layout">
                                     <Label class="h2" text="{{ name }}" />
                                     <Label class="body" textWrap="true" text="{{ description }}" />
                                 </StackLayout>

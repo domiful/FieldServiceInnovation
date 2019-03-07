@@ -1,7 +1,18 @@
 <Page class="page" actionBarHidden="false" navigatingTo="onNavigatingTo" navigatedTo="{{onNavigatedTo}}" loaded="onPageLoaded" xmlns:Card="nativescript-cardview" xmlns="http://www.nativescript.org/tns.xsd">
-  <ActionBar class="action-bar" flat="true" title="{{ title }}"></ActionBar>
-  <ScrollView isScrollEnabled="{{ scrollEnabled }}" class="under-action-bar">
-    <!--> <StackLayout orientation="vertical" class="action-bar-title">
+  <ActionBar class="action-bar" flat="true" title="{{ title }}">
+    <ActionItem text="Filter" tap="{{filter}}" ios.position="right" android.position="popup"></ActionItem>
+  </ActionBar>
+  <GridLayout columns="*" rows="auto, *">
+    <StackLayout class="filterBar" visibility="{{filterSegment}}" row="0">
+      <SegmentedBar row="0" class="m-5" selectedIndex="{{ sbSelectedIndex }}" loaded="{{ sbLoaded }}">
+        <SegmentedBar.items>
+          <SegmentedBarItem title="Breaker" />
+          <SegmentedBarItem title="Outlet" />
+        </SegmentedBar.items>
+      </SegmentedBar>
+    </StackLayout>
+    <ScrollView row="1" isScrollEnabled="{{ scrollEnabled }}" class="under-action-bar">
+      <!--> <StackLayout orientation="vertical" class="action-bar-title">
       <StackLayout orientation="vertical" class="action-bar-area">
         <Label textWrap="true" class="action-bar-area-title" text="{{ title }}"></Label>
         <StackLayout orientation="vertical" class="action-bar-search-area">
@@ -9,23 +20,27 @@
         </StackLayout>
       </StackLayout>
     </StackLayout> !-->
-    <Repeater items="{{ items }}">
-      <Repeater.itemTemplate>
-        <Card:CardView class="card" elevation="6" radius="6" ios:shadowRadius="3" tap="onItemTap">
-          <GridLayout columns="80,*,auto" rows="auto">
-            <StackLayout col="0" class="image-layout">
-              <Image src="{{image}}" stretch="aspectFit" height="80" />
-            </StackLayout>
-            <StackLayout col="1" class="card-layout">
-              <Label class="h2" text="{{ name }}" />
-              <Label class="body" textWrap="true" text="{{ manufacturer }}" />
-            </StackLayout>
-            <StackLayout col="2" class="arrow-layout">
-              <Image src="https://icons-for-free.com/free-icons/png/512/1564490.png" stretch="aspectFill" />
-            </StackLayout>
-          </GridLayout>
-        </Card:CardView>
-      </Repeater.itemTemplate>
-    </Repeater>
-  </ScrollView>
+      <Repeater items="{{ items }}">
+        <Repeater.itemTemplate>
+          <Card:CardView class="card" elevation="6" radius="6" ios:shadowRadius="3" tap="onItemTap">
+            <GridLayout columns="80,*,auto" rows="auto">
+              <StackLayout col="0" class="image-layout">
+                <Image src="{{image}}" stretch="aspectFit" height="80" />
+              </StackLayout>
+              <StackLayout col="1" class="card-layout">
+                <Label class="part" text="{{ name }}" textWrap="true" />
+                <GridLayout class="body" columns="*,auto" rows="auto">
+                  <Label col="0" textWrap="true" text="{{ manufacturer }}" />
+                  <Label col="1" textWrap="true" text="{{ price }}" />
+                </GridLayout>
+              </StackLayout>
+              <StackLayout col="2" class="arrow-layout">
+                <Image src="https://icons-for-free.com/free-icons/png/512/1564490.png" stretch="aspectFill" />
+              </StackLayout>
+            </GridLayout>
+          </Card:CardView>
+        </Repeater.itemTemplate>
+      </Repeater>
+    </ScrollView>
+  </GridLayout>
 </Page>

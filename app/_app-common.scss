@@ -28,6 +28,21 @@
         color: $page-icon-color;
         margin-top: 20%;
     }
+
+    .prodTitle {
+        text-align: left;
+        padding: 6;
+        font-size: 20;
+        color: white;
+        background-color: $accent;
+    }
+
+    .requestButton {
+        background-color: $accent;
+        color: white;
+        margin: 6 0 12 0;
+        padding: 12 0;
+    }
 }
 
 .coverImage {
@@ -42,17 +57,25 @@
 
 TabView {
     background-color: white;
+
 }
 
 .under-action-bar {
     // margin-top: -86;
     background-color: $accent;
-    background-image: url("res://cloud");
+    background-image: url("res://cloud.gif");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 
     .action-bar-title {
+        .welcome {
+            margin: 0 16;
+            color: $white;
+            font-size: 30;
+            font-weight: bold;
+        }
+
         .action-bar-area {
             padding: 0 12 8 12;
             height: 120;
@@ -96,11 +119,12 @@ TabView {
 .card {
     background-color: #fff;
     color: #4d4d4d;
-    margin: 6 12 0;
+    margin: 6 6 0;
 
     .image-layout {
         padding: 0;
         border-radius: 6;
+        vertical-align: center;
 
         Image {
             max-height: 80;
@@ -122,6 +146,16 @@ TabView {
 
     .card-layout {
         padding: 16;
+
+        .part {
+            font-weight: 700;
+            color: black;
+        }
+
+        .body {
+            font-size: 20;
+            color: gray;
+        }
 
         .h1 {
             margin-bottom: 12;
@@ -139,8 +173,7 @@ TabView {
         border-radius: 6;
 
         Image {
-            max-height: 80;
-            width: 80;
+            vertical-align: bottom;
 
         }
 
@@ -165,9 +198,20 @@ TabView {
     }
 }
 
-SegmentedBar {
-    selected-background-color: white;
+.filterBar {
+    background-color: $accent-light;
+
+    SegmentedBar {
+        selected-background-color: $accent;
+        font-size: 18;
+        color: $accent;
+        //background-color: blue;
+    }
+}
+
+.calendarBar {
+    selected-background-color: $white;
     font-size: 18;
-    color: white;
+    color: $white;
     //background-color: blue;
 }

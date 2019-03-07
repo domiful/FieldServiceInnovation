@@ -1,39 +1,61 @@
-//import * as calendarModule from "nativescript-ui-calendar";
+const calendarModule = require("nativescript-ui-calendar");
 const observableModule = require("tns-core-modules/data/observable");
 const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+const frame = require('ui/frame');
 
 function BrowseViewModel() {
     const viewModel = observableModule.fromObject({
         title: "Appointments",
         prop: 0,
         sbSelectedIndex: 0,
+        calViewMode: "Month",
         visibility1: true,
         visibility2: false,
         events: [],
-        sbLoaded: function () {
-            console.log("high");
-            // handle selected index change
-            const segmentedBarComponent = args.object;
+        items: [],
+        sbLoaded: function (event) {
+            const segmentedBarComponent = event.object;
             segmentedBarComponent.on("selectedIndexChange", (sbargs) => {
-                const page = sbargs.object.page;
-                const vm = page.bindingContext;
-                const selectedIndex = sbargs.object.selectedIndex;
-                vm.set("prop", selectedIndex);
-                switch (selectedIndex) {
-                case 0:
-                    vm.set("visibility1", true);
-                    vm.set("visibility2", false);
-                    break;
-                case 1:
-                    vm.set("visibility1", false);
-                    vm.set("visibility2", true);
-                    break;
-                default:
-                    break;
+                //console.log(this.sbSelectedIndex);
+                //let filteredList = [];
+                if (this.sbSelectedIndex !== 0) {
+                    console.log("Month");
+                    this.calViewMode = "Month";
+                }
+                else {
+                    this.calViewMode = "Day";
+
+                }
+
+                // this.items = filteredList;
+            });
+
+        },
+
+        onDateSelected: function (args) {
+            console.log("onDateSelected: " + args.date);
+        },
+        onNavigatedToDate: function (event) {
+            console.log(event.object.view);
+            this.navCal(event.eventData.title);
+            //console.log("date: " +);
+        },
+        navCal: function (title) {
+            //const that = this;
+            //const myPage = frame.topmost().currentPage;
+
+            this.navigate({
+                moduleName: "browse/appt-item-detail/appts-item-detail-page",
+                context: that.items[title],
+                animated: true,
+                transition: {
+                    name: "slide",
+                    duration: 200,
+                    curve: "ease"
                 }
             });
         },
-        onNavigatedTo: function () {
+        onNavigatedTo: function (args) {
             const dataStore = Kinvey.DataStore.collection("appointments", Kinvey.DataStoreType.Sync);
 
             dataStore.pull().then((entities) => {
@@ -41,7 +63,7 @@ function BrowseViewModel() {
                     this.contentLoaded();
 
                 })
-                .catch(function (error) {
+                .catch((error) => {
                     console.log(`${error}`);
                 });
         },
@@ -49,33 +71,51 @@ function BrowseViewModel() {
             let that = this;
             const dataStore = Kinvey.DataStore.collection("appointments");
             const subscription = dataStore.find()
-                .subscribe(function (entities) {
-                    console.log("Retrieved : " + JSON.stringify(entities));
-                    /*  let newItems = entities.map(ent => {
-                           let newEnt = {};
-                           newEnt["name"] = ent["ItemName"];
-                           newEnt["image"] = ent["ImageURL"];
-                           newEnt["manufacturer"] = ent["Manufacturer"];
-                           newEnt["manufacturerSKU"] = ent["ManufacturerSKU"];
-                           newEnt["vendorSKU"] = ent["VendorSKU"];
-                           newEnt["cat1"] = ent["Category1"];
-                           newEnt["cat2"] = ent["Category2"];
-                           newEnt["det1"] = ent["Detail1"];
-                           newEnt["det2"] = ent["Detail2"];
-                           newEnt["weight"] = ent["Weight"];
-                           newEnt["stock"] = ent["OnHand"];
-                           newEnt["price"] = ent["Price"];
+                .subscribe((entities) => {
+                        //console.log("Retrieved : " + JSON.stringify(entities));
+                        let nitems = [];
+                        let newEvents = entities.map((ent) => {
+                            let newEnt = {};
+                            console.log(ent);
+                            let sdate = new Date(ent["date"]);
+                            let calTitle = `${ent["custName"]}, ${ent["custCompany"]}`;
+                            const event = new calendarModule.CalendarEvent(calTitle, sdate, sdate);
 
-                           return newEnt;
-                       });
-                       that.items = newItems;
-                       console.log(that.items);*/
+                            newEnt["id"] = ent["custID"];
+                            newEnt["status"] = ent["status"];
+                            newEnt["techId"] = ent["tech_id"];
+                            newEnt["address"] = ent["address"];
+                            newEnt["city"] = ent["city"];
+                            newEnt["state"] = ent["state"];
+                            newEnt["zip"] = ent["zip"];
+                            newEnt["date"] = new Date(ent["date"]);
+                            newEnt["cell"] = ent["cellphone"];
+                            newEnt["email"] = ent["email"];
+                            newEnt["cust"] = ent["custName"];
+                            newEnt["company"] = ent["custCompany"];
+                            newEnt["service"] = ent["serviceType"];
+                            newEnt["issue"] = ent["issueType"];
+                            newEnt["price"] = ent["Price"];
+                            newEnt["lat"] = ent["ackGeoLat"];
+                            newEnt["long"] = ent["ackGeoLong"];
+                            console.log(newEnt);
+                            let kvp = {};
+                            kvp[calTitle] = newEnt;
+                            nitems.push(kvp);
 
-                }, function (error) {
-                    console.log(error);
-                }, function () {
-                    console.log('pulled accounts');
-                });
+                            return event;
+                        });
+                        that.events = newEvents;
+                        that.items = nitems;
+                        console.log(that.items);
+
+                    },
+                    (error) => {
+                        console.log(error);
+                    },
+                    () => {
+                        console.log('pulled accounts');
+                    });
         }
 
     });
