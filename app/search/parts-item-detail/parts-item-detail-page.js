@@ -1,3 +1,5 @@
+const dialogs = require("tns-core-modules/ui/dialogs");
+
 function onNavigatingTo(args) {
     const page = args.object;
     page.bindingContext = args.context;
@@ -10,5 +12,12 @@ function onBackButtonTap(args) {
     page.frame.goBack();
 }
 
+function onRequestTap(args) {
+    dialogs.alert("Request Sent!").then(function () {
+        console.log("Dialog closed!");
+    });
+}
+
 exports.onNavigatingTo = onNavigatingTo;
 exports.onBackButtonTap = onBackButtonTap;
+exports.onRequestTap = onRequestTap;

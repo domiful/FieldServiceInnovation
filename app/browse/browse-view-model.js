@@ -1,7 +1,7 @@
 const calendarModule = require("nativescript-ui-calendar");
 const observableModule = require("tns-core-modules/data/observable");
 const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
-const frame = require('ui/frame');
+const topmost = require("ui/frame").topmost;
 
 function BrowseViewModel() {
     const viewModel = observableModule.fromObject({
@@ -41,10 +41,10 @@ function BrowseViewModel() {
             //console.log("date: " +);
         },
         navCal: function (title) {
-            //const that = this;
+            const that = this;
             //const myPage = frame.topmost().currentPage;
 
-            this.navigate({
+            topmost().navigate({
                 moduleName: "browse/appt-item-detail/appts-item-detail-page",
                 context: that.items[title],
                 animated: true,
@@ -56,7 +56,7 @@ function BrowseViewModel() {
             });
         },
         onNavigatedTo: function (args) {
-            const dataStore = Kinvey.DataStore.collection("appointments", Kinvey.DataStoreType.Sync);
+            const dataStore = Kinvey.DataStore.collection("Appointments", Kinvey.DataStoreType.Sync);
 
             dataStore.pull().then((entities) => {
                     //console.log(entities);
@@ -69,7 +69,7 @@ function BrowseViewModel() {
         },
         contentLoaded: function () {
             let that = this;
-            const dataStore = Kinvey.DataStore.collection("appointments");
+            const dataStore = Kinvey.DataStore.collection("Appointments");
             const subscription = dataStore.find()
                 .subscribe((entities) => {
                         //console.log("Retrieved : " + JSON.stringify(entities));
@@ -78,7 +78,7 @@ function BrowseViewModel() {
                             let newEnt = {};
                             console.log(ent);
                             let sdate = new Date(ent["date"]);
-                            let calTitle = `${ent["custName"]}, ${ent["custCompany"]}`;
+                            let calTitle = `${ent["custName"]}, ${ent["issueType"]}`;
                             const event = new calendarModule.CalendarEvent(calTitle, sdate, sdate);
 
                             newEnt["id"] = ent["custID"];

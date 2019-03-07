@@ -37,11 +37,16 @@
         background-color: $accent;
     }
 
-    .requestButton {
+    .requestButton,
+    .signButton {
         background-color: $accent;
         color: white;
         margin: 6 0 12 0;
         padding: 12 0;
+    }
+
+    .signButton {
+        background-color: green;
     }
 }
 

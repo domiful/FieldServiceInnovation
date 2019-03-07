@@ -1,32 +1,20 @@
-<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
-    <ActionBar class="action-bar">
+<Page class="page" navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:DrawingPad="nativescript-drawingpad">
+    <ActionBar class="action-bar" flat="true">
         <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
-    </ActionBar>
-    <ActionBar class="action-bar">
-        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back" />
-        <Label class="action-bar-title" text="{{ name }}" horizontalAlignment="center" />
+        <Label class="action-bar-title" text="Appointment" horizontalAlignment="center" />
     </ActionBar>
     <GridLayout class="page-content">
         <ScrollView>
             <StackLayout>
-                <GridLayout columns="*">
-                    <Button col="0" text="Request Part" class="btn-primary" backgroundColor="#3D83B6" tap="{{onRequestTap}}" />
-                </GridLayout>
-                <GridLayout rows="auto, auto, auto">
-                    <Image src="{{ image }}" stretch="aspectFill" height="200" class="m-b-15 m-t-20" />
-                    <StackLayout row="1" class="hr-light m-t-15 m-b-15"></StackLayout>
-                    <GridLayout row="2" rows="*, *, *, *, *, *, *, *, *, *, *" columns="auto,auto">
-                        <Label text="Price" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label col="1" class="text p-b-10">
-                            <FormattedString>
-                                <Span text="$" />
-                                <Span text="{{ price }}" />
-                            </FormattedString>
-                        </Label>
-                        <Label text="Manufacturer" row="1" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ manufacturer }}" row="1" col="1" class="text p-b-10" />
-                        <Label text="Manufacturer SKU" row="2" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ manufacturerSKU }}" row="2" col="1" class="text p-b-10" />
+                <GridLayout rows="auto, auto, auto, auto" visibility="{{ showAbove ? 'visible' : 'collapsed' }}">
+                    <Label text="{{name}}" class="prodTitle" textWrap="true"></Label>
+                    <GridLayout row="1" rows="*, *, *, *, *, *, *, *, *, *, *" columns="auto,auto">
+                        <Label text="Customer" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ cust }}" row="0" col="1" class="text p-b-10" />
+                        <Label text="Company" row="1" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ company }}" row="1" col="1" class="text p-b-10" />
+                        <Label text="Issue" row="2" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
+                        <Label text="{{ issue }}" row="2" col="1" class="text p-b-10" />
                         <Label text="Vendor SKU" row="3" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ vendorSKU }}" row="3" col="1" class="text p-b-10" />
                         <Label text="Category 1" row="4" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
@@ -42,7 +30,16 @@
                         <Label text="On Hand" row="9" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ stock }}" row="9" col="1" class="text p-b-10" />
                     </GridLayout>
+                    <Button row="2" text="Sign &amp; Close" class="requestButton" tap="showDrawpad" />
                 </GridLayout>
+                <StackLayout row="3" visibility="{{ showDP ? 'visible' : 'collapsed' }}">
+                    <Label class="h2" textWrap="true" text="By signing here, I agree that the service was performed to my satisfaction."></Label>
+                    <DrawingPad:DrawingPad height="400" id="drawingPad" penColor="{{ penColor }}" penWidth="{{ penWidth }}" />
+                    <GridLayout rows="auto" columns="*,*">
+                        <Button col="0" text="Sign" class="signButton" tap="onSignTap" />
+                        <Button col="1" text="Cancel" class="requestButton" tap="onCancel" />
+                    </GridLayout>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </GridLayout>
