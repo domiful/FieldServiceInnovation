@@ -6,6 +6,8 @@ const nativescript_locate_address_1 = require("nativescript-locate-address");
 const platform_1 = require("platform");
 const TNSPhone = require("nativescript-phone");
 const permissions = require("nativescript-permissions");
+const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
+
 // email plugin
 var LocateAddress = require("nativescript-locate-address").LocateAddress;
 
@@ -26,7 +28,7 @@ function onNavigatingTo(args) {
     pageData.set("showDP", false);
     pageData.set("cal", page.navigationContext);
     pageData.set("status", 1);
-    console.log(pageData.cal);
+    //console.log(pageData.cal);
     args.object.bindingContext = pageData;
 
 }
@@ -59,6 +61,28 @@ function onAckTap(args) {
         console.log("Marked Acknowledged!");
     });
     pageData.set("status", 2);
+    const dataStore = Kinvey.DataStore.collection("Appointments");
+    const subscription = dataStore.findById(pageData.cal.data["_id"])
+        .subscribe((ent) => {
+                ent.status = 2;
+                dataStore.save({
+                        ent
+                    })
+                    .then(function (entity) {
+                        console.log(entity);
+                    })
+                    .catch(function (error) {
+                        console.log(`${error}`);
+                    });
+
+            },
+            (error) => {
+                console.log(error);
+            },
+            () => {
+                console.log('pulled accounts');
+            });
+
     // pageData.set("showAbove", !pageData.get("showAbove"));
 
     //pageData.set("showDP", !pageData.get("showDP"));

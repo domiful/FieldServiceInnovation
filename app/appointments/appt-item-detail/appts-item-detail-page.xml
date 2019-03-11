@@ -19,7 +19,7 @@
                         <Label text="Issue" row="3" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ cal.data.issue }}" row="3" col="1" class="text p-b-10" />
                         <Label text="Status" row="4" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ status === 2 ? 'Acknowledged' : status ? 'Open' : 'Closed'  }}" row="4" col="1" class="text p-b-10" />
+                        <Label text="{{ status === 2 ? 'Acknowledged' : status ? 'Open' : 'Closed'  }}" color="{{ status === 2 ? 'purple' : status ? 'red' : 'green'  }}" row="4" col="1" class="text p-b-10" />
                         <Label text="Address" row="5" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ cal.data.address }}" row="5" col="1" class="text p-b-10" tap="onTapAddress" />
                         <Label text="{{ cal.data.city}}" row="6" col="1" class="text p-b-10" tap="onTapAddress" />

@@ -19,7 +19,7 @@ function AppointmentsViewModel() {
                 //console.log(this.sbSelectedIndex);
                 //let filteredList = [];
                 if (this.sbSelectedIndex !== 0) {
-                    console.log("Month");
+                    //   console.log("Month");
                     this.calViewMode = "Month";
                 }
                 else {
@@ -36,7 +36,7 @@ function AppointmentsViewModel() {
             console.log("onDateSelected: " + args.date);
         },
         onNavigatedToDate: function (event) {
-            console.log(event.object.view);
+            //   console.log(event.object.view);
             this.navCal(event.eventData.title);
             //console.log("date: " +);
         },
@@ -66,19 +66,29 @@ function AppointmentsViewModel() {
                     console.log(`${error}`);
                 });
         },
+        refreshList: function (args) {
+
+            // Get reference to the PullToRefresh component;
+            var pullRefresh = args.object;
+
+            this.contentLoaded();
+            setTimeout(() => {
+                pullRefresh.refreshing = false;
+            }, 500);
+        },
         contentLoaded: function () {
             let that = this;
             const dataStore = Kinvey.DataStore.collection("Appointments");
             const subscription = dataStore.find()
                 .subscribe((entities) => {
-                        console.log("Retrieved : " + JSON.stringify(entities));
+                        //         console.log("Retrieved : " + JSON.stringify(entities));
                         let nitems = {};
                         let newEvents = entities.map((ent) => {
                             let newEnt = {};
                             console.log(ent);
                             let sdate = new Date(ent["date"]);
                             let calTitle = `${ent["custName"]}, ${ent["issueType"]}`;
-                            const event = new calendarModule.CalendarEvent(calTitle, sdate, sdate);
+                            const event = new calendarModule.CalendarEvent(calTitle, sdate, new Date(Date.parse(sdate) + 3600000));
 
                             newEnt["_id"] = ent["_id"];
                             newEnt["id"] = ent["custID"];
@@ -95,6 +105,7 @@ function AppointmentsViewModel() {
                             newEnt["company"] = ent["custCompany"];
                             newEnt["service"] = ent["serviceType"];
                             newEnt["issue"] = ent["issueType"];
+                            newEnt["price"] = ent["Price"];
                             newEnt["lat"] = ent["ackGeoLat"];
                             newEnt["long"] = ent["ackGeoLong"];
                             console.log(newEnt);
@@ -115,6 +126,7 @@ function AppointmentsViewModel() {
                     () => {
                         console.log('pulled accounts');
                     });
+            //return subscription;
         }
 
     });

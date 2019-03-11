@@ -88,8 +88,7 @@ function PartsViewModel() {
                         newEnt["name"] = ent["ItemName"];
                         newEnt["image"] = ent["ImageURL"];
                         newEnt["manufacturer"] = ent["Manufacturer"];
-                        newEnt["manufacturerSKU"] = ent["ManufacturerSKU"];
-                        newEnt["vendorSKU"] = ent["VendorSKU"];
+                        newEnt["sku"] = ent["SKU"];
                         newEnt["cat1"] = ent["Category1"];
                         newEnt["cat2"] = ent["Category2"];
                         newEnt["det1"] = ent["Detail1"];

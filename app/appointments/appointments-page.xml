@@ -1,4 +1,4 @@
-<Page class="page" navigatingTo="onNavigatingTo" navigatingTo="onNavigatingTo" navigatedTo="{{onNavigatedTo}}" actionBarHidden="false" xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:calendar="nativescript-ui-calendar">
+<Page class="page" navigatingTo="onNavigatingTo" navigatingTo="onNavigatingTo" navigatedTo="{{onNavigatedTo}}" actionBarHidden="false" xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:PullRefresh="nativescript-pulltorefresh" xmlns:calendar="nativescript-ui-calendar">
   <ActionBar class="action-bar" flat="true" title="{{ title }}"></ActionBar>
   <StackLayout orientation="vertical" class="under-action-bar">
     <StackLayout orientation="vertical" class="action-bar-title">
@@ -10,7 +10,9 @@
           </SegmentedBar.items>
         </SegmentedBar>
         <GridLayout row="1" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}" backgroundColor="white">
-          <calendar:RadCalendar id="calendar" eventSource="{{ events }}" eventsViewMode="Inline" selectionMode="Single" viewMode="{{calViewMode}}" transitionMode="Stack" locale="en-US" dateSelected="{{onDateSelected}}" dateDeselected="onDateDeselected" inlineEventSelected="{{onNavigatedToDate}}" navigatingToDateStarted="onNavigatingToDateStarted" viewModeChanged="onViewModeChanged" /> <!-- Event view mode can be one of "None", "Inline" or "Popover" -->
+          <PullRefresh:PullToRefresh refresh="{{refreshList}}">
+            <calendar:RadCalendar id="calendar" eventSource="{{ events }}" eventsViewMode="Inline" selectionMode="Single" viewMode="{{calViewMode}}" transitionMode="Stack" locale="en-US" dateSelected="{{onDateSelected}}" dateDeselected="onDateDeselected" inlineEventSelected="{{onNavigatedToDate}}" navigatingToDateStarted="onNavigatingToDateStarted" viewModeChanged="onViewModeChanged" />
+          </PullRefresh:PullToRefresh> <!-- Event view mode can be one of "None", "Inline" or "Popover" -->
           <!-- Selection mode can be one of "None", "Single", "Multiple" or "Range" -->
           <!-- View mode can be one of "Week", "Month", "MonthNames", "Year" or "Day" -->
           <!-- Available transition modes

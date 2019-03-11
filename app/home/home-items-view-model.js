@@ -28,7 +28,7 @@ function HomeItemsViewModel() {
         },
         contentLoaded: function () {
             let activeUser = Kinvey.User.getActiveUser();
-            console.log(activeUser.data);
+            //(activeUser.data);
             let username = activeUser.data.username === 'dom.raymond@progress.com' ? "Dom Raymond" : "Dan Mitchell";
             this.items = [{ name: username, description: "Senior Electrician" }];
 

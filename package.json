@@ -23,6 +23,7 @@
         "nativescript-locate-address": "^1.0.2",
         "nativescript-mapbox": "^4.4.1",
         "nativescript-phone": "^1.4.0",
+        "nativescript-pulltorefresh": "^2.2.1",
         "nativescript-push-notifications": "^1.1.6",
         "nativescript-theme-core": "~1.0.4",
         "nativescript-ui-calendar": "^3.10.0",

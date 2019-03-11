@@ -28,9 +28,9 @@
                 <Image src="{{image}}" stretch="aspectFit" height="80" />
               </StackLayout>
               <StackLayout col="1" class="card-layout">
-                <Label class="part" text="{{ name }}" textWrap="true" />
+                <Label class="part" text="{{ manufacturer }}" textWrap="true" />
                 <GridLayout class="body" columns="*,auto" rows="auto">
-                  <Label col="0" textWrap="true" text="{{ manufacturer }}" />
+                  <Label col="0" textWrap="true" text="{{ sku }}" />
                   <Label col="1" textWrap="true" text="{{ price }}" />
                 </GridLayout>
               </StackLayout>

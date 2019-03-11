@@ -59,7 +59,6 @@ function onItemTap(args) {
 }
 
 function onTap(args) {
-    console.log("bFUK");
 
     const view = args.view;
     const tappedItem = view.bindingContext;

@@ -8,27 +8,25 @@
             <StackLayout>
                 <GridLayout rows="auto, auto, auto, auto">
                     <Label text="{{name}}" class="prodTitle" textWrap="true"></Label>
-                    <Image row="1" src="{{ image }}" class="prodImage" stretch="aspectFit" class="m-b-15 m-t-20" />
-                    <Button row="2" text="Request Part" class="requestButton" tap="onRequestTap" />
+                    <Image row="1" src="{{ image }}" class="prodImage" stretch="aspectFit" height="200" class="m-b-15 m-t-20" />
+                    <Button row="2" text="Locate Part" class="requestButton" tap="onRequestTap" />
                     <GridLayout row="3" rows="*, *, *, *, *, *, *, *, *, *, *" columns="auto,auto">
-                        <Label text="Price" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ price }}" row="0" col="1" class="text p-b-10" />
-                        <Label text="Manufacturer" row="1" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ manufacturer }}" row="1" col="1" class="text p-b-10" />
-                        <Label text="Manufacturer SKU" row="2" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ manufacturerSKU }}" row="2" col="1" class="text p-b-10" />
-                        <Label text="Vendor SKU" row="3" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ vendorSKU }}" row="3" col="1" class="text p-b-10" />
-                        <Label text="Category 1" row="4" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ cat1 }}" row="4" col="1" class="text p-b-10" />
-                        <Label text="Category 2" row="5" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ cat2 }}" row="5" col="1" class="text p-b-10" />
-                        <Label text="Detail 1" row="6" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ det1 }}" row="6" col="1" class="text p-b-10" />
-                        <Label text="Detail 2" row="7" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ det2 }}" row="7" col="1" class="text p-b-10" />
-                        <Label text="On Hand" row="9" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ stock }}" row="9" col="1" class="text p-b-10" />
+                        <Label text="Price" class="c1 " />
+                        <Label text="{{ price }}" row="0" col="1" class="c2" textWrap="true" />
+                        <Label text="Manufacturer" row="1" class="c1 " />
+                        <Label text="{{ manufacturer }}" row="1" col="1" class="c2" textWrap="true" />
+                        <Label text="SKU" row="3" class="c1 " />
+                        <Label text="{{ sku }}" row="3" col="1" class="c2" textWrap="true" />
+                        <Label text="Category 1" row="4" class="c1 " />
+                        <Label text="{{ cat1 }}" row="4" col="1" class="c2" textWrap="true" />
+                        <Label text="Category 2" row="5" class="c1 " />
+                        <Label text="{{ cat2 }}" row="5" col="1" class="c2" textWrap="true" />
+                        <Label text="Detail 1" row="6" class="c1 " />
+                        <Label text="{{ det1 }}" row="6" col="1" class="c2" textWrap="true" />
+                        <Label text="Detail 2" row="7" class="c1 " />
+                        <Label text="{{ det2 }}" row="7" col="1" class="c2" textWrap="true" />
+                        <Label text="On Hand" row="9" class="c1 " />
+                        <Label text="{{ stock }}" row="9" col="1" class="c2" textWrap="true" />
                     </GridLayout>
                 </GridLayout>
             </StackLayout>

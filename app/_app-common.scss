@@ -37,6 +37,10 @@
         background-color: $accent;
     }
 
+    .prodImage {
+        //max-height: 120;
+    }
+
     .draw {
         .h2 {
             margin: 6;
@@ -54,6 +58,18 @@
     .signButton {
         background-color: green;
     }
+
+    .c1 {
+        margin: 2 6;
+        font-weight: 700;
+        font-size: 22;
+    }
+
+    .c2 {
+        margin: 2 6;
+        font-size: 20;
+        width: 200;
+    }
 }
 
 .coverImage {
@@ -68,7 +84,6 @@
 
 TabView {
     background-color: white;
-
 }
 
 .under-action-bar {
@@ -222,4 +237,8 @@ TabView {
     font-size: 18;
     color: $white;
     //background-color: blue;
+}
+
+#tabs {
+    hidden: collapse;
 }
