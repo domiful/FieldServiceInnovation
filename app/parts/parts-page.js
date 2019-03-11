@@ -1,9 +1,9 @@
-const SearchViewModel = require("./search-view-model");
+const PartsViewModel = require("./parts-view-model");
 
 function onNavigatingTo(args) {
     console.log("parts nav")
     const component = args.object;
-    component.bindingContext = new SearchViewModel();
+    component.bindingContext = new PartsViewModel();
 }
 
 exports.onNavigatingTo = onNavigatingTo;
@@ -21,7 +21,7 @@ function onItemTap(args) {
     const tappedItem = view.bindingContext;
 
     page.frame.navigate({
-        moduleName: "search/parts-item-detail/parts-item-detail-page",
+        moduleName: "parts/parts-item-detail/parts-item-detail-page",
         context: tappedItem,
         animated: true,
         transition: {

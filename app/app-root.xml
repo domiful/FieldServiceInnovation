@@ -9,10 +9,10 @@ http://docs.nativescript.org/cookbook/ui/tab-view
         <Frame defaultPage="home/home-items-page"></Frame>
     </TabViewItem>
     <TabViewItem title="&#xf073;">
-        <Frame defaultPage="browse/browse-page"></Frame>
+        <Frame defaultPage="appointments/appointments-page"></Frame>
     </TabViewItem>
     <TabViewItem title="&#xf0ad;">
-        <Frame defaultPage="search/search-page"></Frame>
+        <Frame defaultPage="parts/parts-page"></Frame>
     </TabViewItem>
     <!--    <TabViewItem title="&#xf279;">
         <Frame defaultPage="map/map-page"></Frame>

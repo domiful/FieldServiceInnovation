@@ -2,7 +2,7 @@ const observableModule = require("tns-core-modules/data/observable");
 const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
 const segmentedBarModule = require("tns-core-modules/ui/segmented-bar");
 
-function SearchViewModel() {
+function PartsViewModel() {
     const viewModel = observableModule.fromObject({
         title: "Parts",
         scrollEnabled: "true",
@@ -115,4 +115,4 @@ function SearchViewModel() {
     return viewModel;
 }
 
-module.exports = SearchViewModel;
+module.exports = PartsViewModel;

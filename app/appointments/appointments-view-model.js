@@ -3,7 +3,7 @@ const observableModule = require("tns-core-modules/data/observable");
 const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
 const topmost = require("ui/frame").topmost;
 
-function BrowseViewModel() {
+function AppointmentsViewModel() {
     const viewModel = observableModule.fromObject({
         title: "Appointments",
         prop: 0,
@@ -44,7 +44,7 @@ function BrowseViewModel() {
             const that = this;
             //const myPage = frame.topmost().currentPage;
             topmost().navigate({
-                moduleName: "browse/appt-item-detail/appts-item-detail-page",
+                moduleName: "appointments/appt-item-detail/appts-item-detail-page",
                 context: { data: that.items[title] },
                 animated: true,
                 transition: {
@@ -95,7 +95,6 @@ function BrowseViewModel() {
                             newEnt["company"] = ent["custCompany"];
                             newEnt["service"] = ent["serviceType"];
                             newEnt["issue"] = ent["issueType"];
-                            newEnt["price"] = ent["Price"];
                             newEnt["lat"] = ent["ackGeoLat"];
                             newEnt["long"] = ent["ackGeoLong"];
                             console.log(newEnt);
@@ -123,4 +122,4 @@ function BrowseViewModel() {
     return viewModel;
 }
 
-module.exports = BrowseViewModel;
+module.exports = AppointmentsViewModel;

@@ -16,7 +16,7 @@
       <StackLayout orientation="vertical" class="action-bar-area">
         <Label textWrap="true" class="action-bar-area-title" text="{{ title }}"></Label>
         <StackLayout orientation="vertical" class="action-bar-search-area">
-          <Button text="&#xf002; Search" tap="onTap" class="fa action-bar-search btn btn-primary btn-active" />
+          <Button text="&#xf002; Parts" tap="onTap" class="fa action-bar-search btn btn-primary btn-active" />
         </StackLayout>
       </StackLayout>
     </StackLayout> !-->
