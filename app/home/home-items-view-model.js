@@ -7,7 +7,7 @@ function HomeItemsViewModel() {
         title: "Home",
         scrollEnabled: "true",
         items: [{
-            name: "Dom Raymond",
+            name: "Dan Mitchell",
             description: "Senior Electrician"
         }],
         logOut: function () {

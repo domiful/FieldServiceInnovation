@@ -3,6 +3,7 @@ const HomeItemsViewModel = require("./home-items-view-model");
 const topmost = require("ui/frame").topmost;
 const Kinvey = require('kinvey-nativescript-sdk').Kinvey;
 const userService = require("~/services/user-service");
+const fromObject = require("tns-core-modules/data/observable").fromObject;
 
 const navigationEntry = {
     moduleName: "home/second-page",
@@ -35,6 +36,7 @@ function onNavigatingTo(args) {
         topmost().navigate("login/login-page");
     }
     else {
+        //source.set("items", { "name": activeUser });
         component.bindingContext = new HomeItemsViewModel();
     }
 }

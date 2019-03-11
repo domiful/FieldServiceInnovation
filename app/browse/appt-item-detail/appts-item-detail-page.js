@@ -54,6 +54,16 @@ function onSignTap(args) {
     pageData.set("showDP", !pageData.get("showDP"));
 }
 
+function onAckTap(args) {
+    dialogs.alert("Marked Acknowledged!").then(function () {
+        console.log("Marked Acknowledged!");
+    });
+    pageData.set("status", 2);
+    // pageData.set("showAbove", !pageData.get("showAbove"));
+
+    //pageData.set("showDP", !pageData.get("showDP"));
+}
+
 function onCancel(args) {
     pageData.set("showAbove", !pageData.get("showAbove"));
 
@@ -105,7 +115,7 @@ function mailTo(args) {
     if (email.available()) {
         email.compose({
             subject: "Message from Technician",
-            to: [addr],
+            to: addr,
             body: msg
         }).then(function (result) {}).catch(function (error) { return console.error(error); });
     }
@@ -117,3 +127,4 @@ exports.onBackButtonTap = onBackButtonTap;
 exports.onSignTap = onSignTap;
 exports.onCancel = onCancel;
 exports.showDrawpad = showDrawpad;
+exports.onAckTap = onAckTap;

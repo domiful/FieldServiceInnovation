@@ -71,7 +71,7 @@ function BrowseViewModel() {
             const dataStore = Kinvey.DataStore.collection("Appointments");
             const subscription = dataStore.find()
                 .subscribe((entities) => {
-                        //console.log("Retrieved : " + JSON.stringify(entities));
+                        console.log("Retrieved : " + JSON.stringify(entities));
                         let nitems = {};
                         let newEvents = entities.map((ent) => {
                             let newEnt = {};
@@ -80,6 +80,7 @@ function BrowseViewModel() {
                             let calTitle = `${ent["custName"]}, ${ent["issueType"]}`;
                             const event = new calendarModule.CalendarEvent(calTitle, sdate, sdate);
 
+                            newEnt["_id"] = ent["_id"];
                             newEnt["id"] = ent["custID"];
                             newEnt["status"] = ent["status"];
                             newEnt["techId"] = ent["tech_id"];

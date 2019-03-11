@@ -7,8 +7,9 @@
         <ScrollView>
             <StackLayout>
                 <GridLayout rows="auto, auto, auto, auto" visibility="{{ showAbove ? 'visible' : 'collapsed' }}">
-                    <Label text="{{name}}" class="prodTitle" textWrap="true"></Label>
-                    <GridLayout row="1" rows="*, *, *, *, *, *, *, *, *, *, *" columns="auto,auto">
+                    <Label text="{{cal.data.issue}}" class="prodTitle" textWrap="true"></Label>
+                    <Button row="1" text="Acknowledge" class="requestButton" tap="onAckTap" />
+                    <GridLayout row="2" rows="*, *, *, *, *, *, *, *, *, *, *" columns="auto,auto">
                         <Label text="Customer" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ cal.data.cust }}" row="0" col="1" class="text p-b-10" />
                         <Label text="Email" row="1" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
@@ -18,13 +19,13 @@
                         <Label text="Issue" row="3" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ cal.data.issue }}" row="3" col="1" class="text p-b-10" />
                         <Label text="Status" row="4" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ status ? 'Open' : 'Close'  }}" row="4" col="1" class="text p-b-10" />
+                        <Label text="{{ status === 2 ? 'Acknowledged' : status ? 'Open' : 'Closed'  }}" row="4" col="1" class="text p-b-10" />
                         <Label text="Address" row="5" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ cal.data.address }}" row="5" col="1" class="text p-b-10" tap="onTapAddress" />
                         <Label text="{{ cal.data.city}}" row="6" col="1" class="text p-b-10" tap="onTapAddress" />
                         <Label text="{{ cal.data.zip }}" row="7" col="1" class="text p-b-10" tap="onTapAddress" />
                     </GridLayout>
-                    <Button row="2" text="Sign &amp; Close" class="requestButton" tap="showDrawpad" />
+                    <Button row="3" text="Sign &amp; Close" class="requestButton" tap="showDrawpad" />
                 </GridLayout>
                 <StackLayout class="draw" row="3" visibility="{{ showDP ? 'visible' : 'collapsed' }}">
                     <Label class="h2" textWrap="true" text="By signing here, I agree that the service was performed to my satisfaction."></Label>
