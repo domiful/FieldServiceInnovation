@@ -1,5 +1,7 @@
 const observableModule = require("tns-core-modules/data/observable");
 const userService = require("~/services/user-service");
+const Kinvey = require('kinvey-nativescript-sdk').Kinvey;
+
 const topmost = require("ui/frame").topmost;
 
 function HomeItemsViewModel() {
@@ -23,6 +25,13 @@ function HomeItemsViewModel() {
 
                     alert("Unfortunately we could not find your account.");
                 });
+        },
+        contentLoaded: function () {
+            let activeUser = Kinvey.User.getActiveUser();
+            console.log(activeUser.data);
+            let username = activeUser.data.username === 'dom.raymond@progress.com' ? "Dom Raymond" : "Dan Mitchell";
+            this.items = [{ name: username, description: "Senior Electrician" }];
+
         },
         categoricalSource: [{
                 name: "Item 1",
