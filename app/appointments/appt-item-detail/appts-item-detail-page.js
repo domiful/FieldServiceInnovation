@@ -3,8 +3,8 @@ const pageData = new observable.Observable();
 const dialogs = require("tns-core-modules/ui/dialogs");
 const nativescript_locate_address_1 = require("nativescript-locate-address");
 // phone dialer
-const platform_1 = require("platform");
-const TNSPhone = require("nativescript-phone");
+const platform = require("platform");
+const phone = require("nativescript-phone");
 const permissions = require("nativescript-permissions");
 const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
 
@@ -27,7 +27,7 @@ function onNavigatingTo(args) {
     pageData.set("showAbove", true);
     pageData.set("showDP", false);
     pageData.set("cal", page.navigationContext);
-    pageData.set("status", 1);
+    pageData.set("cal.data.status", 1);
     //console.log(pageData.cal);
     args.object.bindingContext = pageData;
 
@@ -50,7 +50,37 @@ function onSignTap(args) {
     dialogs.alert("Signed!").then(function () {
         console.log("Dialog closed!");
     });
-    pageData.set("status", 0);
+    const dataStore = Kinvey.DataStore.collection("Appointments");
+
+    const subscription = dataStore.findById(pageData.cal.data["_id"])
+        .subscribe((ent) => {
+                console.log(ent);
+                ent.status = 3;
+                dataStore.save(
+                        ent
+                    )
+                    .then(function (entity) {
+                        console.log('saved');
+                        dataStore.push().then(function (entity) {
+                                console.log('pushed');
+                                dataStore.pull();
+                            })
+                            .catch(function (error) {
+                                console.log(`${error}`);
+                            });
+                    })
+                    .catch(function (error) {
+                        console.log(`${error}`);
+                    });
+
+            },
+            (error) => {
+                console.log(error);
+            },
+            () => {
+                console.log('pulled accounts');
+            });
+    pageData.set("cal.data.status", 3);
     pageData.set("showAbove", !pageData.get("showAbove"));
 
     pageData.set("showDP", !pageData.get("showDP"));
@@ -61,35 +91,38 @@ function onAckTap(args) {
         console.log("Marked Acknowledged!");
     });
 
-    setTimeout(function () { pageData.set("status", 2); }, 2000);
-    /*
+    setTimeout(function () { pageData.set("cal.data.status", 2); }, 2000);
+
     const dataStore = Kinvey.DataStore.collection("Appointments");
 
     const subscription = dataStore.findById(pageData.cal.data["_id"])
-        .subscribe((ent) =>
-            console.log(ent.status);
-            //ent.status = 2;
-            dataStore.save(
-                ent
-            )
-            .then(function (entity) {
-                // console.log(entity);
-            })
-            .catch(function (error) {
-                console.log(`${error}`);
-            }); dataStore.push();
+        .subscribe((ent) => {
+                console.log(ent);
+                ent.status = 2;
+                dataStore.save(
+                        ent
+                    )
+                    .then(function (entity) {
+                        console.log('saved');
+                        dataStore.push().then(function (entity) {
+                                console.log('pushed');
+                                dataStore.pull();
+                            })
+                            .catch(function (error) {
+                                console.log(`${error}`);
+                            });
+                    })
+                    .catch(function (error) {
+                        console.log(`${error}`);
+                    });
 
-        },
-        (error) => {
-            console.log(error);
-        },
-        () => {
-            console.log('pulled accounts');
-        });
-*/
-    // pageData.set("showAbove", !pageData.get("showAbove"));
-
-    //pageData.set("showDP", !pageData.get("showDP"));
+            },
+            (error) => {
+                console.log(error);
+            },
+            () => {
+                console.log('pulled accounts');
+            });
 }
 
 function onCancel(args) {
@@ -119,17 +152,17 @@ function call(args) {
     var task = page.bindingContext.cal.data;
     var phnum = task.cell;
     //console.log("Ready to dial " + phnum);
-    if (platform_1.isAndroid) {
+    if (platform.isAndroid) {
         permissions.requestPermission(android.Manifest.permission.CALL_PHONE, "App Needs This Permission To Make Phone Calls")
             .then(function () {
-                TNSPhone.dial(String(phnum), false);
+                phone.dial(String(phnum), false);
             })
             .catch(function () {
                 console.log("Permission Denied!");
             });
     }
     else {
-        TNSPhone.dial(String(phnum), false);
+        phone.dial(String(phnum), false);
     }
 }
 exports.call = call;

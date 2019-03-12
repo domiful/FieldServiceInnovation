@@ -19,7 +19,7 @@
                         <Label text="Issue" row="3" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ cal.data.issue }}" row="3" col="1" class="text p-b-10" />
                         <Label text="Status" row="4" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ status === 2 ? 'Acknowledged' : status ? 'Open' : 'Closed'  }}" color="{{ status === 2 ? 'purple' : status ? 'red' : 'green'  }}" row="4" col="1" class="text p-b-10" />
+                        <Label text="{{ cal.data.status == 2 ? 'Acknowledged' : cal.data.status == 3 ? 'Closed' : 'Open'  }}" color="{{ cal.data.status == 2 ? 'purple' : cal.data.status == 3 ? 'red' : 'green'  }}" row="4" col="1" class="text p-b-10" />
                         <Label text="Address" row="5" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ cal.data.address }}" row="5" col="1" class="text p-b-10" color="blue" tap="onTapAddress" />
                         <Label text="{{ cal.data.city}}" row="6" col="1" class="text p-b-10" color="blue" tap="onTapAddress" />
@@ -29,7 +29,7 @@
                 </GridLayout>
                 <StackLayout class="draw" row="3" visibility="{{ showDP ? 'visible' : 'collapsed' }}">
                     <Label class="h2" textWrap="true" text="By signing here, I agree that the service was performed to my satisfaction."></Label>
-                    <DrawingPad:DrawingPad height="400" id="drawingPad" penColor="{{ penColor }}" penWidth="{{ penWidth }}" />
+                    <DrawingPad:DrawingPad height="300" id="drawingPad" penColor="{{ penColor }}" penWidth="{{ penWidth }}" />
                     <GridLayout rows="auto" columns="*,*">
                         <Button col="0" text="Sign" class="signButton" tap="onSignTap" />
                         <Button col="1" text="Cancel" class="requestButton" tap="onCancel" />

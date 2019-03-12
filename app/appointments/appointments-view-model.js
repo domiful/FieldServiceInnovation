@@ -108,7 +108,7 @@ function AppointmentsViewModel() {
                             let newEnt = {};
                             console.log(ent);
                             let sdate = new Date(ent["date"]);
-                            let calTitle = `${ent["custName"]}, ${ent["issueType"]}`;
+                            let calTitle = `${ent["custName"]}, ${ent["issueType"]} job&#35; ${ent["_id"]}`;
                             const event = new calendarModule.CalendarEvent(calTitle, sdate, new Date(Date.parse(sdate) + 3600000));
 
                             newEnt["_id"] = ent["_id"];

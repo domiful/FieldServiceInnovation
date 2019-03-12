@@ -47,7 +47,7 @@ function onNavigatingTo(args) {
             }
         })
         .then(function (deviceToken) {
-            alert("Device registered for push notifications.");
+            //alert("Device registered for push notifications.");
             console.log("Device registered for push.  Access token: " + deviceToken);
         })
         .catch(function (error) {
