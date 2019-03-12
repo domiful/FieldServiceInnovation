@@ -11,7 +11,7 @@ function AppointmentsViewModel() {
         calViewMode: "Month",
         visibility1: true,
         visibility2: false,
-        line: "",
+        line: "green",
         events: [],
         items: {},
         sbLoaded: function (event) {

@@ -2,7 +2,7 @@
     <ActionBar class="action-bar" flat="true" title=""></ActionBar>
     <ScrollView isScrollEnabled="{{ scrollEnabled }}" class="under-action-bar coverImage">
         <AbsoluteLayout horizontalAlignment="stretch" width="100%">
-            <Gif:Gif left="0" top="240" src="http://drive.google.com/uc?export=view&id=19SuLCJ4wVOfPaf5urxzkuCOdmwaeiNPk" height="400" width="800" />
+            <Gif:Gif left="0" top="240" src="https://drive.google.com/uc?id=19SuLCJ4wVOfPaf5urxzkuCOdmwaeiNPk" height="400" width="800" />
             <StackLayout width="100%" orientation="vertical" class="action-bar-title">
                 <Label text="Welcome back!" class="welcome"></Label>
                 <Repeater items="{{ items }}" itemTap="onItemTap">

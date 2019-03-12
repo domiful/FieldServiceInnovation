@@ -1,5 +1,5 @@
-<Page loaded="pageLoaded" class="page" actionBarHidden="true" shownModally="onShownModally" xmlns="http://www.nativescript.org/tns.xsd">
-	<FlexboxLayout class="page">
+<Page loaded="pageLoaded" navigatingTo="onNavigatingTo" class="page" actionBarHidden="true" shownModally="onShownModally" xmlns="http://www.nativescript.org/tns.xsd">
+	<StackLayout class="page">
 		<StackLayout class="form">
 			<Image class="logo" src="https://drive.google.com/uc?id=1PVUunBAvqVkX0q19tK3mTPXA2yfumHna" />
 			<Label class="header" text="Field Service" />
@@ -24,5 +24,5 @@
 				<Span text="{{ isLoggingIn ? 'Sign up' : '' }}" class="bold" />
 			</FormattedString>
 		</Label>
-	</FlexboxLayout>
+	</StackLayout>
 </Page>

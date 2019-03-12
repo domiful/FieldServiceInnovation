@@ -47,11 +47,11 @@ function onNavigatingTo(args) {
             }
         })
         .then(function (deviceToken) {
-            //alert("Device registered.  Access token: " + deviceToken);
+            alert("Device registered for push notifications.");
             console.log("Device registered for push.  Access token: " + deviceToken);
         })
         .catch(function (error) {
-            alert("Error: " + error);
+            //alert("Error: " + error);
             console.log("Error: " + error);
         });
     // this will throw up a push notification in an alert box whenever one is received from Kinvey
