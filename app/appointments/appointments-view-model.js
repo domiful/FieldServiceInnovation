@@ -11,6 +11,7 @@ function AppointmentsViewModel() {
         calViewMode: "Month",
         visibility1: true,
         visibility2: false,
+        line: "",
         events: [],
         items: {},
         sbLoaded: function (event) {
@@ -71,14 +72,34 @@ function AppointmentsViewModel() {
             // Get reference to the PullToRefresh component;
             var pullRefresh = args.object;
 
-            this.contentLoaded();
+            const dataStore = Kinvey.DataStore.collection("Appointments", Kinvey.DataStoreType.Sync);
+            //dataStore.push();
+
+            dataStore.push().then((entities) => {
+                    //console.log(entities);
+                    dataStore.pull().then((entities) => {
+                            //console.log(entities);
+                            this.contentLoaded();
+
+                        })
+                        .catch((error) => {
+                            console.log(`${error}`);
+                        });
+                    setTimeout(() => {
+                        pullRefresh.refreshing = false;
+                    }, 500);
+
+                })
+                .catch((error) => {
+                    console.log(`${error}`);
+                });
             setTimeout(() => {
                 pullRefresh.refreshing = false;
             }, 500);
         },
         contentLoaded: function () {
             let that = this;
-            const dataStore = Kinvey.DataStore.collection("Appointments");
+            const dataStore = Kinvey.DataStore.collection("Appointments", Kinvey.DataStoreType.Sync);
             const subscription = dataStore.find()
                 .subscribe((entities) => {
                         //         console.log("Retrieved : " + JSON.stringify(entities));

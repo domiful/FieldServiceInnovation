@@ -1,7 +1,7 @@
 <Page loaded="pageLoaded" class="page" actionBarHidden="true" shownModally="onShownModally" xmlns="http://www.nativescript.org/tns.xsd">
 	<FlexboxLayout class="page">
 		<StackLayout class="form">
-			<Image class="logo" src="https://www.infor.com/img/logo-infor.png" />
+			<Image class="logo" src="https://drive.google.com/uc?id=1PVUunBAvqVkX0q19tK3mTPXA2yfumHna" />
 			<Label class="header" text="Field Service" />
 			<StackLayout class="input-field">
 				<TextField class="input" text="{{ email }}" hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none" returnKeyType="next" />

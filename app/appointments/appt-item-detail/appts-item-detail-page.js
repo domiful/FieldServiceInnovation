@@ -60,29 +60,33 @@ function onAckTap(args) {
     dialogs.alert("Marked Acknowledged!").then(function () {
         console.log("Marked Acknowledged!");
     });
-    pageData.set("status", 2);
+
+    setTimeout(function () { pageData.set("status", 2); }, 2000);
+    /*
     const dataStore = Kinvey.DataStore.collection("Appointments");
+
     const subscription = dataStore.findById(pageData.cal.data["_id"])
-        .subscribe((ent) => {
-                ent.status = 2;
-                dataStore.save({
-                        ent
-                    })
-                    .then(function (entity) {
-                        console.log(entity);
-                    })
-                    .catch(function (error) {
-                        console.log(`${error}`);
-                    });
+        .subscribe((ent) =>
+            console.log(ent.status);
+            //ent.status = 2;
+            dataStore.save(
+                ent
+            )
+            .then(function (entity) {
+                // console.log(entity);
+            })
+            .catch(function (error) {
+                console.log(`${error}`);
+            }); dataStore.push();
 
-            },
-            (error) => {
-                console.log(error);
-            },
-            () => {
-                console.log('pulled accounts');
-            });
-
+        },
+        (error) => {
+            console.log(error);
+        },
+        () => {
+            console.log('pulled accounts');
+        });
+*/
     // pageData.set("showAbove", !pageData.get("showAbove"));
 
     //pageData.set("showDP", !pageData.get("showDP"));

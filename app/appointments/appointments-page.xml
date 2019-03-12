@@ -11,7 +11,18 @@
         </SegmentedBar>
         <GridLayout row="1" visibility="{{ visibility1 ? 'visible' : 'collapsed' }}" backgroundColor="white">
           <PullRefresh:PullToRefresh refresh="{{refreshList}}">
-            <calendar:RadCalendar id="calendar" eventSource="{{ events }}" eventsViewMode="Inline" selectionMode="Single" viewMode="{{calViewMode}}" transitionMode="Stack" locale="en-US" dateSelected="{{onDateSelected}}" dateDeselected="onDateDeselected" inlineEventSelected="{{onNavigatedToDate}}" navigatingToDateStarted="onNavigatingToDateStarted" viewModeChanged="onViewModeChanged" />
+            <calendar:RadCalendar id="calendar" eventSource="{{ events }}" eventsViewMode="Inline" selectionMode="Single" viewMode="{{calViewMode}}" transitionMode="Stack" locale="en-US" dateSelected="{{onDateSelected}}" dateDeselected="onDateDeselected" inlineEventSelected="{{onNavigatedToDate}}" navigatingToDateStarted="onNavigatingToDateStarted" viewModeChanged="onViewModeChanged">
+              <calendar:RadCalendar.monthViewStyle>
+                <calendar:CalendarMonthViewStyle backgroundColor="Gray" showTitle="true" showWeekNumbers="true" showDayNames="true">
+                  <calendar:CalendarMonthViewStyle.dayCellStyle>
+                    <calendar:DayCellStyle showEventsText="true" eventTextColor="White" eventFontName="Times New Roman" eventFontStyle="BoldItalic" eventTextSize="8" ios:cellTextSize="12" android:cellTextSize="10" />
+                  </calendar:CalendarMonthViewStyle.dayCellStyle>
+                  <calendar:CalendarMonthviewStyle.inlineEventCellStyle>
+                    <calendar:InlineEventCellStyle eventFontName="Avenir" eventTextColor="red" eventFontStyle="BoldItalic" eventTextSize="16" timeTextColor="black" timeTextSize="14" />
+                  </calendar:CalendarMonthviewStyle.inlineEventCellStyle>
+                </calendar:CalendarMonthViewStyle>
+              </calendar:RadCalendar.monthViewStyle>
+            </calendar:RadCalendar>
           </PullRefresh:PullToRefresh> <!-- Event view mode can be one of "None", "Inline" or "Popover" -->
           <!-- Selection mode can be one of "None", "Single", "Multiple" or "Range" -->
           <!-- View mode can be one of "Week", "Month", "MonthNames", "Year" or "Day" -->

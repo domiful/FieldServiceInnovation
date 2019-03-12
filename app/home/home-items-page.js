@@ -2,6 +2,10 @@ const frameModule = require("tns-core-modules/ui/frame");
 const HomeItemsViewModel = require("./home-items-view-model");
 const topmost = require("ui/frame").topmost;
 const Kinvey = require('kinvey-nativescript-sdk').Kinvey;
+const Kpush = require("kinvey-nativescript-sdk/push");
+const dialogs = require("tns-core-modules/ui/dialogs");
+const nativescript_locate_address_1 = require("nativescript-locate-address");
+
 const userService = require("~/services/user-service");
 const fromObject = require("tns-core-modules/data/observable").fromObject;
 
@@ -31,6 +35,47 @@ function onNavigatingTo(args) {
 
     let activeUser = Kinvey.User.getActiveUser();
     console.log(activeUser);
+
+    Kpush.Push.register({
+            android: {
+                senderID: '390861799348'
+            },
+            ios: {
+                alert: true,
+                badge: true,
+                sound: true
+            }
+        })
+        .then(function (deviceToken) {
+            //alert("Device registered.  Access token: " + deviceToken);
+            console.log("Device registered for push.  Access token: " + deviceToken);
+        })
+        .catch(function (error) {
+            alert("Error: " + error);
+            console.log("Error: " + error);
+        });
+    // this will throw up a push notification in an alert box whenever one is received from Kinvey
+    Kpush.Push.onNotification(function (data) {
+        dialogs.confirm({
+            title: data.type,
+            message: data.body,
+            okButtonText: "Let's Go",
+            cancelButtonText: "Cancel",
+        }).then(function (result) {
+            if (result) {
+                var locator = new nativescript_locate_address_1.LocateAddress();
+                locator.locate({
+                    address: "6904 n academy blvd, colorado springs, co 80920",
+                }).then(function () {
+                    //console.log("Maps app launched.");
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+            console.log("Dialog result: " + result);
+        });
+    });
+
     if (!activeUser) {
 
         topmost().navigate("login/login-page");

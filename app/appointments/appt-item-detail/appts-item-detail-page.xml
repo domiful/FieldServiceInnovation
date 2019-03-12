@@ -13,17 +13,17 @@
                         <Label text="Customer" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ cal.data.cust }}" row="0" col="1" class="text p-b-10" />
                         <Label text="Email" row="1" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ cal.data.email }}" row="1" col="1" class="text p-b-10" tap="mailTo" />
+                        <Label text="{{ cal.data.email }}" row="1" col="1" class="text p-b-10" color="blue" tap="mailTo" />
                         <Label text="Cell" row="2" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ cal.data.cell }}" row="2" col="1" class="text p-b-10" tap="call" />
+                        <Label text="{{ cal.data.cell }}" row="2" col="1" class="text p-b-10" color="blue" tap="call" />
                         <Label text="Issue" row="3" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ cal.data.issue }}" row="3" col="1" class="text p-b-10" />
                         <Label text="Status" row="4" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
                         <Label text="{{ status === 2 ? 'Acknowledged' : status ? 'Open' : 'Closed'  }}" color="{{ status === 2 ? 'purple' : status ? 'red' : 'green'  }}" row="4" col="1" class="text p-b-10" />
                         <Label text="Address" row="5" class="p-l-15 p-b-10 m-r-20 text-secondary font-weight-bold" />
-                        <Label text="{{ cal.data.address }}" row="5" col="1" class="text p-b-10" tap="onTapAddress" />
-                        <Label text="{{ cal.data.city}}" row="6" col="1" class="text p-b-10" tap="onTapAddress" />
-                        <Label text="{{ cal.data.zip }}" row="7" col="1" class="text p-b-10" tap="onTapAddress" />
+                        <Label text="{{ cal.data.address }}" row="5" col="1" class="text p-b-10" color="blue" tap="onTapAddress" />
+                        <Label text="{{ cal.data.city}}" row="6" col="1" class="text p-b-10" color="blue" tap="onTapAddress" />
+                        <Label text="{{ cal.data.zip }}" row="7" col="1" class="text p-b-10" color="blue" tap="onTapAddress" />
                     </GridLayout>
                     <Button row="3" text="Sign &amp; Close" class="requestButton" tap="showDrawpad" />
                 </GridLayout>
