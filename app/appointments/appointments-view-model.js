@@ -104,11 +104,12 @@ function AppointmentsViewModel() {
                 .subscribe((entities) => {
                         //         console.log("Retrieved : " + JSON.stringify(entities));
                         let nitems = {};
+                        let withoutClose = [];
                         let newEvents = entities.map((ent) => {
                             let newEnt = {};
-                            console.log(ent);
+                            //console.log(ent);
                             let sdate = new Date(ent["date"]);
-                            let calTitle = `${ent["custName"]}, ${ent["issueType"]} job&#35; ${ent["_id"]}`;
+                            let calTitle = `${ent["custName"]}, ${ent["issueType"]} job#${ent["_id"]}`;
                             const event = new calendarModule.CalendarEvent(calTitle, sdate, new Date(Date.parse(sdate) + 3600000));
 
                             newEnt["_id"] = ent["_id"];
@@ -129,16 +130,20 @@ function AppointmentsViewModel() {
                             newEnt["price"] = ent["Price"];
                             newEnt["lat"] = ent["ackGeoLat"];
                             newEnt["long"] = ent["ackGeoLong"];
-                            console.log(newEnt);
+                            //console.log(newEnt);
                             //let kvp = {};
                             nitems[calTitle] = newEnt;
-                            //nitems.push(kvp);
+
+                            if (ent["status"] !== "3") {
+                                console.log("3equals: " + ent["status"]);
+                                withoutClose.push(event);
+                            }
 
                             return event;
                         });
-                        that.events = newEvents;
+                        that.events = withoutClose;
                         that.items = nitems;
-                        console.log(that.items);
+                        //console.log(that.items);
 
                     },
                     (error) => {

@@ -27,7 +27,7 @@ function onNavigatingTo(args) {
     pageData.set("showAbove", true);
     pageData.set("showDP", false);
     pageData.set("cal", page.navigationContext);
-    pageData.set("cal.data.status", 1);
+    pageData.set("status", page.navigationContext.data.status);
     //console.log(pageData.cal);
     args.object.bindingContext = pageData;
 
@@ -47,15 +47,12 @@ function showDrawpad(args) {
 }
 
 function onSignTap(args) {
-    dialogs.alert("Signed!").then(function () {
-        console.log("Dialog closed!");
-    });
     const dataStore = Kinvey.DataStore.collection("Appointments");
 
     const subscription = dataStore.findById(pageData.cal.data["_id"])
         .subscribe((ent) => {
                 console.log(ent);
-                ent.status = 3;
+                ent.status = "3";
                 dataStore.save(
                         ent
                     )
@@ -80,25 +77,28 @@ function onSignTap(args) {
             () => {
                 console.log('pulled accounts');
             });
-    pageData.set("cal.data.status", 3);
+    pageData.set("status", 3);
     pageData.set("showAbove", !pageData.get("showAbove"));
 
     pageData.set("showDP", !pageData.get("showDP"));
 }
 
 function onAckTap(args) {
-    dialogs.alert("Marked Acknowledged!").then(function () {
-        console.log("Marked Acknowledged!");
+    dialogs.alert({
+        title: "Acknowledged",
+        message: "Use Parts tab to find the parts you need.",
+        okButtonText: "OK",
+
     });
 
-    setTimeout(function () { pageData.set("cal.data.status", 2); }, 2000);
+    setTimeout(function () { pageData.set("status", 2); }, 1000);
 
     const dataStore = Kinvey.DataStore.collection("Appointments");
 
     const subscription = dataStore.findById(pageData.cal.data["_id"])
         .subscribe((ent) => {
                 console.log(ent);
-                ent.status = 2;
+                ent.status = "2";
                 dataStore.save(
                         ent
                     )
