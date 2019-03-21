@@ -8,7 +8,7 @@ const phone = require("nativescript-phone");
 const permissions = require("nativescript-permissions");
 const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
 
-// email plugin
+// nav maps plugin
 var LocateAddress = require("nativescript-locate-address").LocateAddress;
 
 const email = require("nativescript-email");
@@ -24,15 +24,20 @@ function onNavigatingTo(args) {
         }
     );
     //console.log(args);
+    //view showing details
     pageData.set("showAbove", true);
+    //view showing signature pad
     pageData.set("showDP", false);
+    //calendar data for specific date
     pageData.set("cal", page.navigationContext);
+    //current status
     pageData.set("status", page.navigationContext.data.status);
-    //console.log(pageData.cal);
+
     args.object.bindingContext = pageData;
 
 }
 
+//goes back to previous page
 function onBackButtonTap(args) {
     const view = args.object;
     const page = view.page;
@@ -40,12 +45,14 @@ function onBackButtonTap(args) {
     page.frame.goBack();
 }
 
+//toggles showing the signature pad and hifding the details above
 function showDrawpad(args) {
     pageData.set("showAbove", !pageData.get("showAbove"));
 
     pageData.set("showDP", !pageData.get("showDP"));
 }
 
+//When signed is presed it updates the status of the current appointment
 function onSignTap(args) {
     const dataStore = Kinvey.DataStore.collection("Appointments");
 
@@ -83,6 +90,7 @@ function onSignTap(args) {
     pageData.set("showDP", !pageData.get("showDP"));
 }
 
+//changes the appointment state to acknowledged
 function onAckTap(args) {
     dialogs.alert({
         title: "Acknowledged",

@@ -36,6 +36,7 @@ function onNavigatingTo(args) {
     let activeUser = Kinvey.User.getActiveUser();
     console.log(activeUser);
 
+    //register for push notifications
     Kpush.Push.register({
             android: {
                 senderID: '390861799348'
