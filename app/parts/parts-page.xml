@@ -1,4 +1,4 @@
-<Page class="page" actionBarHidden="false" navigatingTo="onNavigatingTo" navigatedTo="{{onNavigatedTo}}" loaded="onPageLoaded" xmlns:Card="nativescript-cardview" xmlns="http://www.nativescript.org/tns.xsd">
+<Page class="page" actionBarHidden="false" navigatingTo="onNavigatingTo" navigatedTo="{{onNavigatedTo}}" xmlns:PullRefresh="nativescript-pulltorefresh" loaded="onPageLoaded" xmlns:Card="nativescript-cardview" xmlns="http://www.nativescript.org/tns.xsd">
   <ActionBar class="action-bar" flat="true" title="{{ title }}">
     <ActionItem text="Filter" tap="{{filter}}" ios.position="right" android.position="popup"></ActionItem>
   </ActionBar>
@@ -6,12 +6,14 @@
     <StackLayout class="filterBar" visibility="{{filterSegment}}" row="0">
       <SegmentedBar row="0" class="m-5" selectedIndex="{{ sbSelectedIndex }}" loaded="{{ sbLoaded }}">
         <SegmentedBar.items>
-          <SegmentedBarItem title="Breaker" />
-          <SegmentedBarItem title="Plug" />
+          <SegmentedBarItem title="Motherboard" />
+          <SegmentedBarItem title="Peripherals" />
         </SegmentedBar.items>
       </SegmentedBar>
     </StackLayout>
-    <ScrollView row="1" isScrollEnabled="{{ scrollEnabled }}" class="under-action-bar">
+    <StackLayout row="1" class="refreshList">
+                  <PullRefresh:PullToRefresh refresh="{{refreshList}}">
+
       <!--> <StackLayout orientation="vertical" class="action-bar-title">
       <StackLayout orientation="vertical" class="action-bar-area">
         <Label textWrap="true" class="action-bar-area-title" text="{{ title }}"></Label>
@@ -20,7 +22,8 @@
         </StackLayout>
       </StackLayout>
     </StackLayout> !-->
-      <Repeater items="{{ items }}">
+
+      <Repeater items="{{ items }}" class="refreshList">
         <Repeater.itemTemplate>
           <Card:CardView class="card" elevation="6" radius="6" ios:shadowRadius="3" tap="onItemTap">
             <GridLayout columns="80,*,auto" rows="auto">
@@ -35,12 +38,13 @@
                 </GridLayout>
               </StackLayout>
               <StackLayout col="2" class="arrow-layout">
-                <Image src="https://icons-for-free.com/free-icons/png/512/1564490.png" stretch="aspectFill" />
+                <Image src="https://i1.wp.com/www.clker.com/cliparts/V/1/Z/A/h/U/left-arrow-right-hi.png" stretch="aspectFill" />
               </StackLayout>
             </GridLayout>
           </Card:CardView>
         </Repeater.itemTemplate>
       </Repeater>
-    </ScrollView>
+          </PullRefresh:PullToRefresh>
+</StackLayout>
   </GridLayout>
 </Page>

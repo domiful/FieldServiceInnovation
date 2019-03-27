@@ -26,6 +26,36 @@ function PartsViewModel() {
                     console.log(`${error}`);
                 });
         },
+        refreshList: function (args) {
+
+            // Get reference to the PullToRefresh component;
+            var pullRefresh = args.object;
+
+            const dataStore = Kinvey.DataStore.collection("items", Kinvey.DataStoreType.Sync);
+            //dataStore.push();
+
+            dataStore.push().then((entities) => {
+                    //console.log(entities);
+                    dataStore.pull().then((entities) => {
+                            //console.log(entities);
+                            this.contentLoaded();
+
+                        })
+                        .catch((error) => {
+                            console.log(`${error}`);
+                        });
+                    setTimeout(() => {
+                        pullRefresh.refreshing = false;
+                    }, 500);
+
+                })
+                .catch((error) => {
+                    console.log(`${error}`);
+                });
+            setTimeout(() => {
+                pullRefresh.refreshing = false;
+            }, 500);
+        },
         filter: function () {
             //console.log("filtered");
             if (this.filterSegment == 'collapsed') {
@@ -33,14 +63,15 @@ function PartsViewModel() {
                 let filteredList = [];
                 if (this.sbSelectedIndex === 0) {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() !== "plug") {
+                        if (i.cat2.toLowerCase() == "motherboards") {
+                            console.log(i.cat2.toLowerCase())
                             filteredList.push(i);
                         }
                     });
                 }
                 else {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() == "plug") {
+                        if (i.cat2.toLowerCase() !== "motherboards") {
                             filteredList.push(i);
                         }
                     });
@@ -60,14 +91,14 @@ function PartsViewModel() {
                 let filteredList = [];
                 if (this.sbSelectedIndex === 0) {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() == "plug") {
+                        if (i.cat2.toLowerCase() !== "motherboards") {
                             filteredList.push(i);
                         }
                     });
                 }
                 else {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() !== "plug") {
+                        if (i.cat2.toLowerCase() == "motherboards") {
                             filteredList.push(i);
                         }
                     });
@@ -85,10 +116,11 @@ function PartsViewModel() {
                     console.log("Retrieved : " + JSON.stringify(entities));
                     let newItems = entities.map(ent => {
                         let newEnt = {};
+                        console.log(JSON.stringify(ent));
                         newEnt["name"] = ent["ItemName"];
                         newEnt["image"] = ent["ImageURL"];
                         newEnt["manufacturer"] = ent["Manufacturer"];
-                        newEnt["sku"] = ent["SKU"];
+                        newEnt["sku"] = ent["ManufacturerSKU"];
                         newEnt["cat1"] = ent["Category1"];
                         newEnt["cat2"] = ent["Category2"];
                         newEnt["det1"] = ent["Detail1"];

@@ -1,7 +1,7 @@
 <Page loaded="pageLoaded" navigatingTo="onNavigatingTo" class="page" actionBarHidden="true" shownModally="onShownModally" xmlns="http://www.nativescript.org/tns.xsd">
 	<StackLayout class="page">
 		<StackLayout class="form">
-			<Image class="logo" src="https://drive.google.com/uc?id=1PVUunBAvqVkX0q19tK3mTPXA2yfumHna" />
+			<Image class="logo" src="https://www.resco.net/wp-content/themes/resco/images/icons-crm/field-service.png" />
 			<Label class="header" text="Field Service" />
 			<StackLayout class="input-field">
 				<TextField class="input" text="{{ email }}" hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none" returnKeyType="next" />
