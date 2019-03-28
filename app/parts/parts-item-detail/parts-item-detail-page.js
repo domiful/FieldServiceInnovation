@@ -37,7 +37,7 @@ function onRequestTap(args) {
 
     setTimeout(function () {
         Kinvey.CustomEndpoint.execute('SendPushNotification', {
-                type: "Infor Notification",
+                type: "Service Notification",
                 msg: "A closer store location has been found."
             })
             .then(function (response) {

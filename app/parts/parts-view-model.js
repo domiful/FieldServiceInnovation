@@ -63,15 +63,17 @@ function PartsViewModel() {
                 let filteredList = [];
                 if (this.sbSelectedIndex === 0) {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() == "motherboards") {
-                            console.log(i.cat2.toLowerCase())
+                        console.log(i.cat2.toLowerCase());
+
+                        if (i.cat2.toLowerCase() !== "plug") {
+                            //console.log(i.cat2.toLowerCase())
                             filteredList.push(i);
                         }
                     });
                 }
                 else {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() !== "motherboards") {
+                        if (i.cat2.toLowerCase() == "plug") {
                             filteredList.push(i);
                         }
                     });
@@ -91,14 +93,14 @@ function PartsViewModel() {
                 let filteredList = [];
                 if (this.sbSelectedIndex === 0) {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() !== "motherboards") {
+                        if (i.cat2.toLowerCase() == "plug") {
                             filteredList.push(i);
                         }
                     });
                 }
                 else {
                     this.archive.forEach((i) => {
-                        if (i.cat2.toLowerCase() == "motherboards") {
+                        if (i.cat2.toLowerCase() !== "plug") {
                             filteredList.push(i);
                         }
                     });
