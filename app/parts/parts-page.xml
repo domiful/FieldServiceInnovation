@@ -12,9 +12,8 @@
       </SegmentedBar>
     </StackLayout>
     <StackLayout row="1" class="refreshList">
-                  <PullRefresh:PullToRefresh refresh="{{refreshList}}">
-
-      <!--> <StackLayout orientation="vertical" class="action-bar-title">
+      <PullRefresh:PullToRefresh refresh="{{refreshList}}">
+        <!--> <StackLayout orientation="vertical" class="action-bar-title">
       <StackLayout orientation="vertical" class="action-bar-area">
         <Label textWrap="true" class="action-bar-area-title" text="{{ title }}"></Label>
         <StackLayout orientation="vertical" class="action-bar-search-area">
@@ -22,29 +21,30 @@
         </StackLayout>
       </StackLayout>
     </StackLayout> !-->
-
-      <Repeater items="{{ items }}" class="refreshList">
-        <Repeater.itemTemplate>
-          <Card:CardView class="card" elevation="6" radius="6" ios:shadowRadius="3" tap="onItemTap">
-            <GridLayout columns="80,*,auto" rows="auto">
-              <StackLayout col="0" class="image-layout">
-                <Image src="{{image}}" stretch="aspectFit" height="80" />
-              </StackLayout>
-              <StackLayout col="1" class="card-layout">
-                <Label class="part" text="{{ manufacturer }}" textWrap="true" />
-                <GridLayout class="body" columns="*,auto" rows="auto">
-                  <Label col="0" textWrap="true" text="{{ sku }}" />
-                  <Label col="1" textWrap="true" text="{{ price }}" />
+        <ScrollView class="refreshList">
+          <Repeater items="{{ items }}" class="refreshList">
+            <Repeater.itemTemplate>
+              <Card:CardView class="card" elevation="6" radius="6" ios:shadowRadius="3" tap="onItemTap">
+                <GridLayout columns="80,*,auto" rows="auto">
+                  <StackLayout col="0" class="image-layout">
+                    <Image src="{{image}}" stretch="aspectFit" height="80" />
+                  </StackLayout>
+                  <StackLayout col="1" class="card-layout">
+                    <Label class="part" text="{{ manufacturer }}" textWrap="true" />
+                    <GridLayout class="body" columns="*,auto" rows="auto">
+                      <Label col="0" textWrap="true" text="{{ sku }}" />
+                      <Label col="1" textWrap="true" text="{{ price }}" />
+                    </GridLayout>
+                  </StackLayout>
+                  <StackLayout col="2" class="arrow-layout">
+                    <Image src="https://i1.wp.com/www.clker.com/cliparts/V/1/Z/A/h/U/left-arrow-right-hi.png" stretch="aspectFill" />
+                  </StackLayout>
                 </GridLayout>
-              </StackLayout>
-              <StackLayout col="2" class="arrow-layout">
-                <Image src="https://i1.wp.com/www.clker.com/cliparts/V/1/Z/A/h/U/left-arrow-right-hi.png" stretch="aspectFill" />
-              </StackLayout>
-            </GridLayout>
-          </Card:CardView>
-        </Repeater.itemTemplate>
-      </Repeater>
-          </PullRefresh:PullToRefresh>
-</StackLayout>
+              </Card:CardView>
+            </Repeater.itemTemplate>
+          </Repeater>
+        </ScrollView>
+      </PullRefresh:PullToRefresh>
+    </StackLayout>
   </GridLayout>
 </Page>
